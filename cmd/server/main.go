@@ -10,6 +10,11 @@ import (
 	"time"
 
 	"github.com/labstack/echo/v4"
+	"github.com/trikrama/Depublic/internal/builder"
+	"github.com/trikrama/Depublic/internal/config"
+	"github.com/trikrama/Depublic/internal/http/binder"
+	"github.com/trikrama/Depublic/internal/http/server"
+	"github.com/trikrama/Depublic/internal/http/validator"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -76,7 +81,7 @@ func buildGormDB(cfg config.PostgresConfig) (*gorm.DB, error) {
 func splash() {
 	colorReset := "\033[0m"
 
-	splashText :=  `
+	splashText := `
 	____        _                    
    |  _ \ _   _| |__   ___ _ __  ___ 
    | |_) | | | | '_ \ / _ \ '_ \/ __|

@@ -2,6 +2,7 @@ package router
 
 import (
 	"github.com/labstack/echo/v4"
+	"github.com/trikrama/Depublic/internal/http/handler"
 )
 
 type Route struct {
