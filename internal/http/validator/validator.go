@@ -1,8 +1,11 @@
 package validator
 
 import (
+	"errors"
 	"fmt"
 	"reflect"
+	"regexp"
+	"strconv"
 	"strings"
 
 	"github.com/go-playground/validator/v10"
@@ -45,4 +48,31 @@ func ValidatorErrors(err error) map[string]string {
 	}
 
 	return fields
+}
+
+func CheckDataEmpty(data ...any) error {
+	for _, value := range data {
+		if value == "" {
+			return errors.New("field tidak boleh kosong")
+		}
+		if value == 0 {
+			return errors.New("field tidak boleh kosong")
+		}
+	}
+	return nil
+}
+
+func EmailFormat(email string) error {
+	emailRegex := regexp.MustCompile(`^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$`)
+	if emailRegex.MatchString(email) {
+		return nil
+	}
+	return errors.New("email tidak valid")
+}
+
+func MinLength(data string, minLength int) error {
+	if len(data) < minLength {
+		return errors.New("minimal " + strconv.Itoa(minLength) + " karakter, ulangi kembali!")
+	}
+	return nil
 }

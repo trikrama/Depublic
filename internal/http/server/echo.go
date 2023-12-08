@@ -1,9 +1,9 @@
 package server
 
 import (
-	echojwt "github.com/labstack/echo-jwt/v4"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	"github.com/trikrama/Depublic/common"
 	"github.com/trikrama/Depublic/internal/config"
 	"github.com/trikrama/Depublic/internal/http/binder"
 	"github.com/trikrama/Depublic/internal/http/router"
@@ -37,7 +37,7 @@ func NewServer(
 	}
 
 	for _, private := range privateRoutes {
-		v1.Add(private.Method, private.Path, private.Handler, JWTProtection(cfg.JWT.SecretKey))
+		v1.Add(private.Method, private.Path, private.Handler, common.JWTProtected(cfg.JWT.SecretKey), common.RBACMiddleware(private.Roles...))
 	}
 
 	e.GET("/ping", func(c echo.Context) error {
@@ -45,10 +45,4 @@ func NewServer(
 	})
 
 	return &Server{e}
-}
-
-func JWTProtection(secretKey string) echo.MiddlewareFunc {
-	return echojwt.WithConfig(echojwt.Config{
-		SigningKey: []byte(secretKey),
-	})
 }

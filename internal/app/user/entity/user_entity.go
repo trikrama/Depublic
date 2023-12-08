@@ -1,4 +1,4 @@
-package user
+package entity
 
 import (
 	"time"
@@ -10,35 +10,32 @@ type User struct {
 	ID        int64          `json:"id"`
 	Name      string         `json:"name"`
 	Email     string         `json:"email"`
+	Number    string         `json:"number"`
 	Password  string         `json:"password"`
-	Role      string         `json:"role"`
+	Role      string         `json:"role" default:"buyer"`
 	CreatedAt time.Time      `json:"-"`
 	UpdatedAt time.Time      `json:"-"`
 	DeletedAt gorm.DeletedAt `json:"-"`
 }
 
-func NewUser(u  UserRequest) *User {
+func NewUser(u UserRequest) *User {
 	return &User{
 		Name:      u.Name,
 		Email:     u.Email,
+		Number:    u.Number,
 		Password:  u.Password,
-		Role:      u.Role,
 		CreatedAt: time.Now(),
 		UpdatedAt: time.Now(),
 	}
 }
 
-func UpdateUser(id int64, name, email, password, role string) *User {
+func NewUserUpdate(u UserRequestUpdate) *User {
 	return &User{
-		ID:        id,
-		Name:      name,
-		Email:     email,
-		Password:  password,
+		ID:        u.ID,
+		Name:      u.Name,
+		Email:     u.Email,
+		Number:    u.Number,
+		Password:  u.Password,
 		UpdatedAt: time.Now(),
 	}
 }
-
-
-
-
-
