@@ -30,14 +30,3 @@ type EventRequestUpdate struct {
 	Quantity  int64     `json:"quantity"`
 	Status   string    `json:"status"`
 }
-
-// func NewEventRequest(e Event) *Event {
-// 	return &Event{
-// 		Name:     e.Name,
-// 		Category: e.Category,
-// 		Location: e.Location,
-// 		Price:    e.Price,
-// 		Date:     e.Date,
-// 		Status:   e.Status,
-// 	}
-// }

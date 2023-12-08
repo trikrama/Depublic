@@ -31,9 +31,13 @@ func NewUserHandler(cfg *config.Config, userService service.UserServiceInterface
 func (h *UserHandler) GetAllUsers(c echo.Context) error {
 	users, err := h.userService.GetAllUser(c.Request().Context())
 	if err != nil {
-		return err
+		return c.JSON(http.StatusUnprocessableEntity, echo.Map{
+			"message": err.Error(),
+		})
 	}
-	return c.JSON(http.StatusOK, users)
+	return c.JSON(http.StatusOK, echo.Map{
+		"data":   users,
+	})
 }
 
 func (h *UserHandler) GetUserByID(c echo.Context) error {
@@ -44,15 +48,19 @@ func (h *UserHandler) GetUserByID(c echo.Context) error {
 	if claims.Role != "Admin" {
 		if int64(idInt) != claims.ID {
 			return c.JSON(http.StatusForbidden, echo.Map{
-				"message": "Anda tidak punya akses untuk akun ini",
+				"message": "You don't have access to this user",
 			})
 		}
 	}
 	user, err := h.userService.GetUserByID(c.Request().Context(), idInt)
 	if err != nil {
-		return err
+		return c.JSON(http.StatusUnprocessableEntity, echo.Map{
+			"message": err.Error(),
+		})
 	}
-	return c.JSON(http.StatusOK, user)
+	return c.JSON(http.StatusOK, echo.Map{
+		"data": user,
+	})
 }
 
 func (h *UserHandler) CreateUser(c echo.Context) error {
@@ -76,9 +84,14 @@ func (h *UserHandler) CreateUser(c echo.Context) error {
 	newNotif := notifEntity.NewNotification(*notif)
 	err := h.notifService.CreateNotification(c.Request().Context(), newNotif)
 	if err != nil {
-		return err
+		return c.JSON(http.StatusUnprocessableEntity, echo.Map{
+			"message": err.Error(),
+		})
 	}
-	return c.JSON(http.StatusCreated, userNewRequest)
+	userResponse := entity.NewUserResponse(userNewRequest)
+	return c.JSON(http.StatusCreated, echo.Map{
+		"data": userResponse,
+	})
 }
 
 func (h *UserHandler) UpdateUser(c echo.Context) error {
@@ -91,17 +104,21 @@ func (h *UserHandler) UpdateUser(c echo.Context) error {
 	if claims.Role != "Admin" {
 		if user.ID != claims.ID {
 			return c.JSON(http.StatusForbidden, echo.Map{
-				"message": "Anda tidak punya akses untuk akun ini",
+				"message": "You don't have access to this user",
 			})
 		}
 	}
 	userRequest := entity.NewUserUpdate(user)
 	userUpdate, err := h.userService.UpdateUser(c.Request().Context(), userRequest)
 	if err != nil {
-		return c.JSON(http.StatusUnprocessableEntity, err)
+		return c.JSON(http.StatusUnprocessableEntity, echo.Map{
+			"message": err.Error(),
+		})
 	}
 	userResponse := entity.NewUserResponse(userUpdate)
-	return c.JSON(http.StatusOK, userResponse)
+	return c.JSON(http.StatusOK, echo.Map{
+		"data": userResponse,
+	})
 }
 
 func (h *UserHandler) DeleteUser(c echo.Context) error {
@@ -111,7 +128,7 @@ func (h *UserHandler) DeleteUser(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, validator.ValidatorErrors(err))
 	}
 	return c.JSON(http.StatusOK, echo.Map{
-		"message": "user deleted",
+		"message": "Success delete user",
 	})
 }
 

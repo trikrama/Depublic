@@ -109,7 +109,7 @@ func PrivateRoutes(
 		},
 		{
 			Method:  echo.GET,
-			Path:    "/events/available/:available",
+			Path:    "/events/status/:status",
 			Handler: eventHandler.FilterEventByStatus,
 			Roles:   allRoles,
 		},

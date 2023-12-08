@@ -28,7 +28,6 @@ func NewTransactionHandler(cfg *config.Config, transactionService service.Transa
 }
 
 func (h *TransactionHandler) WebHookTransaction(c echo.Context) error {
-	fmt.Println("ini webhook")
 	var notficationPayload entity.TransactionPaymentMidtrans
 	if err := c.Bind(&notficationPayload); err != nil {
 		return c.JSON(http.StatusBadRequest, validator.ValidatorErrors(err))
@@ -40,9 +39,9 @@ func (h *TransactionHandler) WebHookTransaction(c echo.Context) error {
 			"message": err.Error(),
 		})
 	}
-
+	
 	if notficationPayload.TransactionStatus == "settlement" {
-		tx.TransactionStatus = "paid"
+		tx.TransactionStatus = "success"
 	}
 
 	err = h.transactionService.UpdateTransaction(c.Request().Context(), tx)

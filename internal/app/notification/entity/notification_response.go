@@ -10,8 +10,8 @@ type NotificationResponse struct {
 	CreatedAt time.Time `json:"created_at"`
 }
 
-func NewNotificationResponse(n Notification) NotificationResponse {
-	return NotificationResponse{
+func NewNotificationResponse(n *Notification) *NotificationResponse {
+	return &NotificationResponse{
 		ID:        n.ID,
 		Title:     n.Title,
 		Content:   n.Body,

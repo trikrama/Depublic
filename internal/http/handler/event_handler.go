@@ -77,7 +77,7 @@ func (h *EventHandler) DeleteEvent(c echo.Context) error {
 
 func (h *EventHandler) SearchEvent(c echo.Context) error {
 	var inputSearch struct {
-		KeyWord string `param:"query" validate:"required"`
+		KeyWord string `param:"keyword" validate:"required"`
 	}
 
 	if err := c.Bind(&inputSearch); err != nil {
@@ -155,7 +155,7 @@ func (h *EventHandler) FilterEventByLocation(ctx echo.Context) error {
 
 func (h *EventHandler) FilterEventByStatus(ctx echo.Context) error {
 	var input struct {
-		Status string `param:"available"`
+		Status string `param:"status"`
 	}
 
 	if err := ctx.Bind(&input); err != nil {

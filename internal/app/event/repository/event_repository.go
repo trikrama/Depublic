@@ -86,12 +86,12 @@ func (r *EventRepository) DeleteEvent(c context.Context, id int) error {
 
 // SearchEvent
 func (r *EventRepository) SearchEvent(ctx context.Context, search string) ([]*entity.Event, error) {
-	tickets := make([]*entity.Event, 0)
-	result := r.db.WithContext(ctx).Where("title LIKE ?", "%"+search+"%").Find(&tickets)
+	events := make([]*entity.Event, 0)
+	result := r.db.WithContext(ctx).Where("name LIKE ?", "%"+search+"%").Find(&events)
 	if result.Error != nil {
 		return nil, result.Error
 	}
-	return tickets, nil
+	return events, nil
 }
 
 func (r *EventRepository) FilterEventByPrice(ctx context.Context, min, max string) ([]*entity.Event, error) {

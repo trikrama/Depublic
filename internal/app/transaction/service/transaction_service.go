@@ -9,8 +9,6 @@ import (
 	"github.com/google/uuid"
 	"github.com/midtrans/midtrans-go"
 
-	// "github.com/midtrans/midtrans-go/coreapi"
-
 	"github.com/midtrans/midtrans-go/snap"
 
 	// repositoryEvent "github.com/trikrama/Depublic/internal/app/event/repository"
@@ -137,7 +135,7 @@ func (s *TransactionService) UpdateTransaction(c context.Context, transaction *e
 	if err != nil {
 		return errors.New("event not found")
 	}
-	if event.Status != "Availebale" {
+	if event.Status != "Available" {
 		return errors.New("event not availebale")
 	}
 	if event.Quantity < int64(transaction.Quantity) {
