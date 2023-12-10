@@ -91,50 +91,8 @@ func PrivateRoutes(
 		//filter and sort
 		{
 			Method:  echo.GET,
-			Path:    "/events/keyword/:keyword",
-			Handler: eventHandler.SearchEvent,
-			Roles:   allRoles,
-		},
-		{
-			Method:  echo.GET,
-			Path:    "/events/price/:min/:max",
-			Handler: eventHandler.FilterEventByPrice,
-			Roles:   allRoles,
-		},
-		{
-			Method:  echo.GET,
-			Path:    "/events/location/:location",
-			Handler: eventHandler.FilterEventByLocation,
-			Roles:   allRoles,
-		},
-		{
-			Method:  echo.GET,
-			Path:    "/events/status/:status",
-			Handler: eventHandler.FilterEventByStatus,
-			Roles:   allRoles,
-		},
-		{
-			Method:  echo.GET,
-			Path:    "/events/date/:start_date/:end_date",
-			Handler: eventHandler.FilterEventByDate,
-			Roles:   allRoles,
-		},
-		{
-			Method:  echo.GET,
-			Path:    "/events/cheapest",
-			Handler: eventHandler.SortEventByCheapest,
-			Roles:   allRoles,
-		},
-		{
-			Method:  echo.GET,
-			Path:    "/events/expensive",
-			Handler: eventHandler.SortEventByExpensive,
-			Roles:   allRoles,
-		},
-		{
-			Method:  echo.GET,
-			Path:    "/events/newest",
-			Handler: eventHandler.SortEventByNewest,
+			Path:    "/events/filter",
+			Handler: eventHandler.GetAllEventByFilter,
 			Roles:   allRoles,
 		},
 		//Router for transactions
@@ -154,7 +112,7 @@ func PrivateRoutes(
 			Method:  echo.GET,
 			Path:    "/transactions/:id",
 			Handler: transactionHandler.GetTransactionByID,
-			Roles:   allRoles,
+			Roles:   onlyAdmin,
 		},
 		{
 			Method:  echo.PUT,
@@ -172,7 +130,7 @@ func PrivateRoutes(
 			Method:  echo.GET,
 			Path:    "/transactions/user/:id",
 			Handler: transactionHandler.GetTransactionsByUser,
-			Roles:   onlyAdmin,
+			Roles:   allRoles,
 		},
 		//Router for History Transaction
 		{
@@ -229,23 +187,23 @@ func PrivateRoutes(
 			Method:  echo.GET,
 			Path:    "/notifications",
 			Handler: notifHandler.GetAllNotifications,
-			Roles:   allRoles,
+			Roles:   onlyAdmin,
 		},
 	}
 }
 
-func PublicRoutes(authHandler *handler.UserHandler, transactionHandler *handler.TransactionHandler) []*Route {
+func PublicRoutes(authHandler *handler.AuthHandler, transactionHandler *handler.TransactionHandler) []*Route {
 	return []*Route{
 		{
 			Method:  echo.POST,
 			Path:    "/login",
-			Handler: authHandler.LoginUser,
+			Handler: authHandler.Login,
 			Roles:   allRoles,
 		},
 		{
 			Method:  echo.POST,
 			Path:    "/register",
-			Handler: authHandler.CreateUser,
+			Handler: authHandler.Register,
 			Roles:   onlyUser,
 		},
 		{

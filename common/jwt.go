@@ -13,8 +13,6 @@ import (
 	"github.com/trikrama/Depublic/internal/config"
 )
 
-
-
 type JwtCustomClaims struct {
 	ID    int64  `json:"id"`
 	Name  string `json:"name"`
@@ -33,7 +31,7 @@ func JWTProtected(secretKey string) echo.MiddlewareFunc {
 }
 
 func GenerateAccessToken(c context.Context, user *entity.User) (string, error) {
-	expiredTime := time.Now().Local().Add(10 * time.Minute)
+	expiredTime := time.Now().Local().Add(60 * time.Minute)
 	claims := JwtCustomClaims{
 		ID:    user.ID,
 		Name:  user.Name,
@@ -56,6 +54,3 @@ func GenerateAccessToken(c context.Context, user *entity.User) (string, error) {
 
 	return encodedToken, nil
 }
-
-//migrate create -ext sql -dir db/migrations create_table_user
-//migrate -database postgres://postgres:trikrama@localhost:5432/depublic?sslmode=disable -path db/migration-golang up

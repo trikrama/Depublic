@@ -2,12 +2,12 @@ package builder
 
 import (
 	"github.com/midtrans/midtrans-go/snap"
-	repoNotif "github.com/trikrama/Depublic/internal/app/notification/repository"
-	serviceNotif "github.com/trikrama/Depublic/internal/app/notification/service"
 	repoBlog "github.com/trikrama/Depublic/internal/app/blog/repository"
 	serviceBlog "github.com/trikrama/Depublic/internal/app/blog/service"
 	repoEvent "github.com/trikrama/Depublic/internal/app/event/repository"
 	serviceEvent "github.com/trikrama/Depublic/internal/app/event/service"
+	repoNotif "github.com/trikrama/Depublic/internal/app/notification/repository"
+	serviceNotif "github.com/trikrama/Depublic/internal/app/notification/service"
 	repoTransaction "github.com/trikrama/Depublic/internal/app/transaction/repository"
 	serviceTransaction "github.com/trikrama/Depublic/internal/app/transaction/service"
 	"github.com/trikrama/Depublic/internal/app/user/repository"
@@ -35,8 +35,9 @@ func BuildPrivateRoutes(cfg *config.Config, db *gorm.DB, midtransClient snap.Cli
 
 	// Transaction
 	transactionRepository := repoTransaction.NewTransactionRepository(db)
+	paymentService := serviceTransaction.NewPaymentService(midtransClient)
 	transactionService := serviceTransaction.NewTransactionService(transactionRepository)
-	transactionHandler := handler.NewTransactionHandler(cfg, transactionService)
+	transactionHandler := handler.NewTransactionHandler(cfg, transactionService, notifService, eventService, paymentService)
 
 	//Blog
 	blogRepository := repoBlog.NewBlogRepository(db)
@@ -46,15 +47,21 @@ func BuildPrivateRoutes(cfg *config.Config, db *gorm.DB, midtransClient snap.Cli
 }
 
 func BuildPublicRoutes(cfg *config.Config, db *gorm.DB, midtransClient snap.Client) []*router.Route {
+	//repository
 	userRepository := repository.NewRepositoryUser(db)
-	userService := service.NewUserService(userRepository)
 	notifRepository := repoNotif.NewNotificationRepository(db)
-	notifService := serviceNotif.NewNotificationService(notifRepository)
-	userHandler := handler.NewUserHandler(cfg, userService, notifService)
-
-	//Transaction
+	eventRepository := repoEvent.NewEventRepository(db)
 	transactionRepository := repoTransaction.NewTransactionRepository(db)
+
+	//service
+	userService := service.NewUserService(userRepository)
+	notifService := serviceNotif.NewNotificationService(notifRepository)
+	eventService := serviceEvent.NewEventService(eventRepository)
+	paymentService := serviceTransaction.NewPaymentService(midtransClient)
 	transactionService := serviceTransaction.NewTransactionService(transactionRepository)
-	transactionHandler := handler.NewTransactionHandler(cfg, transactionService)
-	return router.PublicRoutes(userHandler, transactionHandler)
+	
+	//handler
+	authHandler := handler.NewAuthHandler(cfg, userService, notifService)
+	transactionHandler := handler.NewTransactionHandler(cfg, transactionService, notifService, eventService, paymentService)
+	return router.PublicRoutes(authHandler, transactionHandler)
 }

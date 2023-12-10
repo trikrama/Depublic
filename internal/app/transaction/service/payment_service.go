@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/midtrans/midtrans-go"
 	"github.com/midtrans/midtrans-go/snap"
@@ -32,44 +33,18 @@ func (s *PaymentService) CreateTransactionMidtrans(ctx context.Context, paymentR
 			FName: paymentRequest.Name,
 			Email: paymentRequest.Email,
 		},
+		Items: &[]midtrans.ItemDetails{
+			{
+				ID:    strconv.Itoa(int(paymentRequest.EventID)),
+				Name:  paymentRequest.Name,
+				Qty:   int32(paymentRequest.TransactionQuantity),
+				Price: paymentRequest.PriceEvent,
+			},
+		},
 	}
-
 	snapResponse, err := s.client.CreateTransaction(request)
 	if err != nil {
 		return "", err
 	}
-
 	return snapResponse.RedirectURL, nil
 }
-
-// if paymentRequest.Status != "Available" {
-// 	return "", errors.New("event not availebale")
-// }
-// if paymentRequest.EventQuantity < int64(paymentRequest.TransactionQuantity) {
-// 	return "", errors.New("Event quantity not enough")
-// }
-// request := &snap.Request{
-// 	TransactionDetails: midtrans.TransactionDetails{
-// 		OrderID:  paymentRequest.OrderID.String(),
-// 		GrossAmt: paymentRequest.Amount,
-// 	},
-// 	CustomerDetail: &midtrans.CustomerDetails{
-// 		FName: paymentRequest.Name,
-// 		Email: paymentRequest.Email,
-// 	},
-// 	Items: &[]midtrans.ItemDetails{
-// 		{
-// 			ID:    strconv.Itoa(int(paymentRequest.EventID)),
-// 			Name:  paymentRequest.Name,
-// 			Qty:   int32(paymentRequest.TransactionQuantity),
-// 			Price: paymentRequest.PriceEvent,
-// 		},
-// 	},
-// }
-
-// snapResponse, err := s.client.CreateTransaction(request)
-// if err != nil {
-// 	return "", err
-// }
-
-// return snapResponse.RedirectURL, nil

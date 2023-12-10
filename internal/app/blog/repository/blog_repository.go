@@ -10,7 +10,7 @@ import (
 type BlogRepositoryInterface interface {
 	GetAllBlog(c context.Context) ([]*entity.Blog, error)
 	GetBlogByID(c context.Context, id int) (*entity.Blog, error)
-	CreateBlog(c context.Context, blog *entity.Blog) error
+	CreateBlog(c context.Context, blog *entity.Blog) (*entity.Blog, error)
 	UpdateBlog(c context.Context, blog *entity.Blog) (*entity.Blog, error)
 	DeleteBlog(c context.Context, id int) error
 }
@@ -43,12 +43,12 @@ func (r *BlogRepository) GetBlogByID(c context.Context, id int) (*entity.Blog, e
 	return blog, nil
 }
 
-func (r *BlogRepository) CreateBlog(c context.Context, blog *entity.Blog) error {
+func (r *BlogRepository) CreateBlog(c context.Context, blog *entity.Blog) (*entity.Blog, error) {
 	err := r.db.WithContext(c).Create(&blog).Error
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return blog, nil
 }
 
 func (r *BlogRepository) UpdateBlog(c context.Context, blog *entity.Blog) (*entity.Blog, error) {

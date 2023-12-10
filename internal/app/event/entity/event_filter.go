@@ -1,26 +1,23 @@
 package entity
 
-type FilterTicketsRequest struct {
-	Search      string `json:"search" param:"search"`
-	Location    string `json:"location" param:"location"`
-	Category    string `json:"category" param:"category"`
-	StartTime   string `json:"startTime" param:"startTime"`
-	EndTime     string `json:"endTime" param:"endTime"`
-	MinPrice    string `json:"minPrice" param:"minPrice"`
-	MaxPrice    string `json:"maxPrice" param:"maxPrice"`
-	SortBy      string `json:"sortBy" param:"sortBy"`
+// QueryFilter adalah struct untuk filter dan sorting
+type QueryFilter struct {
+	Sort   SortQuery
+	Filter FilterQuery
+	Search string
 }
 
+// SortQuery adalah struct untuk sorting
+type SortQuery struct {
+	By     string
+	Order  string
+}
 
-func NewFilter(search, location, category, startTime, endTime, minPrice, maxPrice, sortBy string) *FilterTicketsRequest {
-	return &FilterTicketsRequest{
-		Search:      search,
-		Location:    location,
-		Category:    category,
-		StartTime:   startTime,
-		EndTime:     endTime,
-		MinPrice:    minPrice,
-		MaxPrice:    maxPrice,
-		SortBy:      sortBy,
-	}
+// FilterQuery adalah struct untuk filter
+type FilterQuery struct {
+	Price         float64
+	Location      string
+	StartDate     string
+	EndDate       string
+	Status        string
 }

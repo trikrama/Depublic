@@ -57,11 +57,7 @@ func (r *UserRepository) CreateUser(c context.Context, user *entity.User) error 
 }
 
 func (r *UserRepository) UpdateUser(c context.Context, user *entity.User) (*entity.User, error) {
-	err := r.db.WithContext(c).First(&user, user.ID).Error
-	if err != nil {
-		return &entity.User{}, errors.New("User not found")
-	}
-	err = r.db.WithContext(c).Model(&entity.User{}).Where("id = ?", user.ID).Updates(&user).Error
+	err := r.db.WithContext(c).Model(&entity.User{}).Where("id = ?", user.ID).Updates(&user).Error
 	if err != nil {
 		return &entity.User{}, err
 	}

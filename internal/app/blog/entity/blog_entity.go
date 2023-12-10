@@ -1,16 +1,20 @@
 package entity
 
-import "time"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type Blog struct {
-	ID        int64      `json:"id"`
-	Image     string     `json:"image"`
-	Date      string     `json:"date"`
-	Title     string     `json:"title"`
-	Body      string     `json:"body"`
-	CreatedAt time.Time  `json:"-"`
-	UpdatedAt time.Time  `json:"-"`
-	DeletedAt *time.Time `json:"-"`
+	ID        int64          `json:"id"`
+	Image     string         `json:"image"`
+	Date      string         `json:"date"`
+	Title     string         `json:"title"`
+	Body      string         `json:"body"`
+	CreatedAt time.Time      `json:"-"`
+	UpdatedAt time.Time      `json:"-"`
+	DeletedAt gorm.DeletedAt `json:"-"`
 }
 
 func NewBlog(b BlogRequest) *Blog {

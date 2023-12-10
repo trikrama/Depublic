@@ -10,7 +10,7 @@ import (
 type BlogServiceInterface interface {
 	GetAllBlog(c context.Context) ([]*entity.Blog, error)
 	GetBlogByID(c context.Context, id int) (*entity.Blog, error)
-	CreateBlog(c context.Context, blog *entity.Blog) error
+	CreateBlog(c context.Context, blog *entity.Blog) (*entity.Blog, error)
 	UpdateBlog(c context.Context, blog *entity.Blog) (*entity.Blog, error)
 	DeleteBlog(c context.Context, id int) error
 }
@@ -37,7 +37,7 @@ func (s *BlogService) GetBlogByID(c context.Context, id int) (*entity.Blog, erro
 }
 
 
-func (s *BlogService) CreateBlog(c context.Context, blog *entity.Blog) error {
+func (s *BlogService) CreateBlog(c context.Context, blog *entity.Blog) (*entity.Blog, error) {
 	return s.repo.CreateBlog(c, blog)
 }
 
