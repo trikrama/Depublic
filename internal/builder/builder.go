@@ -59,9 +59,10 @@ func BuildPublicRoutes(cfg *config.Config, db *gorm.DB, midtransClient snap.Clie
 	eventService := serviceEvent.NewEventService(eventRepository)
 	paymentService := serviceTransaction.NewPaymentService(midtransClient)
 	transactionService := serviceTransaction.NewTransactionService(transactionRepository)
-	
+
 	//handler
 	authHandler := handler.NewAuthHandler(cfg, userService, notifService)
 	transactionHandler := handler.NewTransactionHandler(cfg, transactionService, notifService, eventService, paymentService)
-	return router.PublicRoutes(authHandler, transactionHandler)
+	eventHandler := handler.NewEventHandler(cfg, eventService)
+	return router.PublicRoutes(authHandler, transactionHandler, eventHandler)
 }

@@ -65,12 +65,6 @@ func PrivateRoutes(
 		},
 		{
 			Method:  echo.GET,
-			Path:    "/events",
-			Handler: eventHandler.GetAllEvents,
-			Roles:   allRoles,
-		},
-		{
-			Method:  echo.GET,
 			Path:    "/events/:id",
 			Handler: eventHandler.GetEventByID,
 			Roles:   allRoles,
@@ -192,7 +186,7 @@ func PrivateRoutes(
 	}
 }
 
-func PublicRoutes(authHandler *handler.AuthHandler, transactionHandler *handler.TransactionHandler) []*Route {
+func PublicRoutes(authHandler *handler.AuthHandler, transactionHandler *handler.TransactionHandler, eventHandler *handler.EventHandler) []*Route {
 	return []*Route{
 		{
 			Method:  echo.POST,
@@ -210,6 +204,12 @@ func PublicRoutes(authHandler *handler.AuthHandler, transactionHandler *handler.
 			Method:  echo.POST,
 			Path:    "/webhook",
 			Handler: transactionHandler.WebHookTransaction,
+			Roles:   allRoles,
+		},
+		{
+			Method:  echo.GET,
+			Path:    "/events",
+			Handler: eventHandler.GetAllEvents,
 			Roles:   allRoles,
 		},
 	}
