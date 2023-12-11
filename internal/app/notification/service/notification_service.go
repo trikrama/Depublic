@@ -38,6 +38,7 @@ func (s *NotificationService) DeleteNotification(c context.Context, id int) erro
 }
 
 func (s *NotificationService) GetByUser(c context.Context, id int64) ([]*entity.Notification, error) {
+	s.repo.UpdateStatusNotification(c, id, true)
 	return s.repo.GetByUser(c, id)
 }
 

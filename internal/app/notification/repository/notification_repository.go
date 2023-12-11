@@ -13,6 +13,7 @@ type NotificationRepositoryInterface interface {
 	UpdateNotification(c context.Context, notification *entity.Notification) error
 	DeleteNotification(c context.Context, id int) error
 	GetAllNotifications(c context.Context) ([]*entity.Notification, error)
+	UpdateStatusNotification(c context.Context, id int64, status bool) error 
 }
 
 type NotificationRepository struct {
@@ -65,4 +66,12 @@ func (r *NotificationRepository) GetAllNotifications(c context.Context) ([]*enti
 		return nil, err
 	}
 	return notifications, nil
+}
+
+func (r *NotificationRepository) UpdateStatusNotification(c context.Context, id int64, status bool) error {
+	err := r.db.WithContext(c).Model(&entity.Notification{}).Where("user_id = ?", id).Update("is_read", status).Error
+	if err != nil {
+		return err
+	}
+	return nil
 }

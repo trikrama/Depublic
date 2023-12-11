@@ -43,8 +43,6 @@ func (s *TransactionService) CreateTransaction(c context.Context, transaction *e
 		return nil, fmt.Errorf("There are only %d tickets available", event.Quantity)
 	}
 
-
-
 	total := event.Price * int64(transaction.Quantity)
 	transaction.Total = int(total)
 

@@ -57,6 +57,9 @@ func (h *TransactionHandler) WebHookTransaction(c echo.Context) error {
 	if notficationPayload.TransactionStatus == "settlement" {
 		tx.TransactionStatus = "success"
 		event.Quantity -= int64(tx.Quantity)
+		if event.Quantity <= 0 {
+			event.Status = "sold out"
+		}
 		err := h.eventService.UpdateEvent(c.Request().Context(),  event)
 		if err != nil { 
 			return c.JSON(http.StatusInternalServerError, echo.Map{"message": err.Error()})
