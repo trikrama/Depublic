@@ -1,5 +1,8 @@
 BEGIN;
 
+-- Tambahkan EXTENSION "uuid-ossp"
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
 -- Buat kolom baru dengan UUID
 ALTER TABLE "public"."transactions" ADD COLUMN new_id UUID DEFAULT uuid_generate_v4() NOT NULL;
 

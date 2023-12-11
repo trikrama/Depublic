@@ -1,7 +1,5 @@
 BEGIN;
 
--- Tambahkan EXTENSION "uuid-ossp"
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Buat kolom baru dengan SERIAL
 ALTER TABLE "public"."transactions" ADD COLUMN new_id SERIAL PRIMARY KEY;
