@@ -5,12 +5,17 @@ Proyek ini dibuat untuk untuk memenuhi syarat-syarat menyelesaikan kegiatan Stud
 
 ## Detail Proyek
 Tema: 
+
 Aplikasi Ticketing Berbasis Web
 
-Nama Aplikasi: 
+Nama Aplikasi:
+
 Depublic
 
+Kelompok : 4
+
 Deskripsi:
+
 Platform ini merupakan tempat jual-beli tiket konser ataupun event. Platform ini membuka dan menyediakan berbagai jenis kategori kebutuhan. User yang mendaftarkan diri pada aplikasi ini dapat berperan buyer. Dalam hal ini, pengguna diharapkan dapat dengan mudah menemukan jadwal konser yang sesuai dengan kebutuhan mereka dan membayar tiket secara online. Selain itu, website ini juga diharapkan dapat menyediakan informasi yang akurat dan terkini tentang event yang sedang berlangsung.
 
 Untuk detail lebih lanjut, dapat dilihat di [sini](https://docs.google.com/presentation/d/1vvOwCKjysLxORL7GOtOJbgiW3XAVuYsRK0ccUa8VOzA/edit#slide=id.g248d5834739_0_47).
@@ -56,3 +61,7 @@ migrate -database "postgres://postgres:trikrama@localhost:5432/depublic_db?sslmo
 go run cmd/server/main.go
 ```
 
+
+## Dokumentasi
+
+- [Postman](https://documenter.getpostman.com/view/21997905/2s9YkhgjAD#f824225e-ea39-49a0-b149-42a7242a9d7b)
