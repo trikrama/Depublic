@@ -1,0 +1,2068 @@
+{
+	"info": {
+		"_postman_id": "eb2d282b-883f-45d7-b650-a8abfd56f39e",
+		"name": "Depublic",
+		"description": "Platform ini merupakan tempat jual-beli tiket konser ataupun event. Platform ini membuka dan menyediakan berbagai jenis kategori kebutuhan. User yang mendaftarkan diri pada aplikasi ini dapat berperan buyer. Dalam hal ini, pengguna diharapkan dapat dengan mudah menemukan jadwal konser yang sesuai dengan kebutuhan mereka dan membayar tiket secara online. Selain itu, website ini juga diharapkan dapat menyediakan informasi yang akurat dan terkini tentang event yang sedang berlangsung.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30939515"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GetAllUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi tentang semua pengguna yang terdaftar di platform ini. Ini merupakan endpoint yang berguna untuk administrasi sistem atau fitur yang membutuhkan daftar lengkap pengguna.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah akses yang tidak sah.\n    \n- Penggunaan endpoint ini sebaiknya dibatasi sesuai kebutuhan, dan data sensitif pengguna harus diatur dengan baik.\n    \n- Gunakan informasi ini dengan bijak dan sesuai dengan pedoman keamanan dan privasi."
+					},
+					"response": [
+						{
+							"name": "GetAllUser",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"users"
+									]
+								}
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"name": "Content-Type",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 3,\n            \"name\": \"Tri12\",\n            \"email\": \"tri@gmail.com\",\n            \"number\": \"\",\n            \"password\": \"$2a$10$yh0wPQJagB1v6a7Ghz7/ReqyaW89vGQnVkTr2wG7z6l7LHrWXIbN.\",\n            \"role\": \"\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"TriTes\",\n            \"email\": \"trires@gmail.com\",\n            \"number\": \"\",\n            \"password\": \"$2a$10$WNl07uum1meABaF6a/BvUeSVFE6Pt.GouPiNjZazrS906OYhoa7Ia\",\n            \"role\": \"\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"tess\",\n            \"email\": \"tes@gmail.com\",\n            \"number\": \"tes@gmail.com\",\n            \"password\": \"$2a$10$rgG8UwIMHowut3k3NcIQ6OC0fHZbYS06m12UFAABKbsodSP3i.WWG\",\n            \"role\": \"Buyer\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"tessssss\",\n            \"email\": \"tes1@gmail.com\",\n            \"number\": \"082292248823\",\n            \"password\": \"$2a$10$DBy6.E8ETxXYAg/S.zvvP.QLqGGgGt2uY8pISqkL20gB3lzWVhSQ.\",\n            \"role\": \"Buyer\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Buyer\",\n            \"email\": \"buyer@gmail.com\",\n            \"number\": \"0812345678\",\n            \"password\": \"$2a$10$Wdb5DaK.S31oCfRSO6Ye7.V2v8gzWA05xfZ/d..BPJjPmdmMC8EnC\",\n            \"role\": \"Buyer\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"tess\",\n            \"email\": \"buyer1@gmail.com\",\n            \"number\": \"082292248822\",\n            \"password\": \"$2a$10$Oz4Sd9tkJphmALRoh6PrFOyA86nxvtnFDJFNvMbhgyg8rXMUpnl/2\",\n            \"role\": \"Buyer\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"raihan\",\n            \"email\": \"raihan@gmail.com\",\n            \"number\": \"082292248822\",\n            \"password\": \"$2a$10$4INaJQh3YLIeNcBcgwDHGeMmWza8Xap2TPvJ0G9iPWNK57WrawBC2\",\n            \"role\": \"Buyer\"\n        },\n        {\n            \"id\": 12,\n            \"name\": \"fahri\",\n            \"email\": \"fahri@gmail.com\",\n            \"number\": \"082292248822\",\n            \"password\": \"$2a$10$I9mXLPfxteFyBzOyC0EJoekKcbvC5iqSibPIjJhLi0.yKLpnNZme2\",\n            \"role\": \"Buyer\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Pujo Akmal\",\n            \"email\": \"pujoakmal@gmail.com\",\n            \"number\": \"0812345679\",\n            \"password\": \"$2a$10$6BqeDBzrdFlut1p8yIga/eAFhsRkENrluQyyIk4.YaKmkijrgnvBy\",\n            \"role\": \"Buyer\"\n        },\n        {\n            \"id\": 13,\n            \"name\": \"Anggi Aisyah\",\n            \"email\": \"anggi@gmail.com\",\n            \"number\": \"082292248822\",\n            \"password\": \"$2a$10$dTOc80b6Ze/lQWED/LJVneK5CriMMhMgVPsCnN.VAKAlAwAentOPK\",\n            \"role\": \"Buyer\"\n        },\n        {\n            \"id\": 14,\n            \"name\": \"anggi\",\n            \"email\": \"AnggiAis@gmail.com\",\n            \"number\": \"082292248822\",\n            \"password\": \"$2a$10$x4CcUJsdmV5rAbYKIe277OgAJBtaxGgytZP9C3PceBKA49j5kBw.y\",\n            \"role\": \"Buyer\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "GetUserById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi lengkap tentang seorang pengguna berdasarkan ID pengguna tertentu. Ini dapat digunakan untuk mendapatkan profil lengkap pengguna atau informasi terkait pengguna tertentu.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah akses yang tidak sah.\n    \n- Gunakan informasi ini dengan bijak dan sesuai dengan pedoman keamanan dan privasi.\n    \n- Jika informasi transaksi disertakan, pastikan untuk menyaring data yang relevan dan aman untuk ditampilkan."
+					},
+					"response": [
+						{
+							"name": "GetUserById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/users/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:20:41 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "156"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Tri\",\n        \"email\": \"tri@gmail.com\",\n        \"number\": \"\",\n        \"password\": \"$2a$10$.NiRFYefdtivLFY7OtWfgOIJ4ecQyx0TMLEQ.YtzRlFMKBQbYGWIm\",\n        \"role\": \"Admin\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"name\": \"Pujo Akmal\",\r\n        \"email\": \"pujoakmal@gmail.com\",\r\n        \"number\": \"0812345679\",\r\n        \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						},
+						"description": "Update User hanya bisa di kalukan user yang memliki id yang sama dengan yang ingin di ubah, serta admin bisa mengupdate semua user."
+					},
+					"response": [
+						{
+							"name": "UpdateUser",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"name\": \"Pujo Akmal\",\r\n        \"email\": \"pujoakmal@gmail.com\",\r\n        \"number\": \"0812345679\",\r\n        \"password\": \"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/users/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:21:02 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "105"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"Pujo Akmal\",\n        \"email\": \"pujoakmal@gmail.com\",\n        \"number\": \"0812345679\",\n        \"role\": \"Buyer\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"1"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan fungsionalitas untuk menghapus seorang pengguna berdasarkan ID pengguna tertentu. Ini merupakan operasi yang bersifat permanen dan akan menghapus seluruh informasi yang terkait dengan pengguna tersebut dari sistem.\n\n- Penggunaan endpoint ini sebaiknya dibatasi dengan hati-hati dan hanya diberikan kepada pengguna dengan hak akses yang sesuai.\n    \n- Pastikan untuk memberikan konfirmasi atau tindakan pengamanan tambahan sebelum menghapus pengguna untuk mencegah penghapusan yang tidak disengaja.\n    \n- Penghapusan pengguna juga harus memastikan penghapusan data terkait seperti riwayat transaksi atau informasi pribadi lainnya."
+					},
+					"response": [
+						{
+							"name": "DeleteUser",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/users/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"users",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:21:25 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Success delete user\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Selamat datang di Depublic Ticketing App! Kami senang Anda memilih platform kami untuk pengalaman belanja tiket konser dan event yang menyenangkan. Berikut adalah beberapa kata-kata yang ingin kami sampaikan kepada Anda:\n\n- **Terima Kasih:**  \n    Terima kasih telah memilih Depublic! Kami menghargai kepercayaan Anda dan berkomitmen untuk memberikan pengalaman terbaik dalam mencari, membeli, dan menjual tiket.\n    \n- **Eksplorasi yang Menyenangkan:**  \n    Mari menjelajahi dunia event bersama-sama! Temukan konser favorit Anda, jelajahi event menarik, dan nikmati pengalaman belanja tiket yang mudah dan menyenangkan.\n    \n- **Kemudahan Akses:**  \n    Kami mendesain aplikasi ini agar mudah diakses. Temukan fitur-fitur hebat kami seperti pencarian canggih, notifikasi terkini, dan riwayat transaksi yang terorganisir.\n    \n- **Keamanan Transaksi:**  \n    Keamanan transaksi Anda adalah prioritas kami. Nikmati proses pembayaran yang aman dan dapat diandalkan, serta jaminan informasi pribadi yang terlindungi.\n    \n- **Tetap Terhubung:**  \n    Jangan lewatkan informasi terbaru tentang event favorit Anda. Aktifkan notifikasi in-app untuk mendapatkan pembaruan langsung dan penawaran khusus.\n    \n- **Hubungi Kami:**  \n    Tim kami siap membantu! Jika Anda memiliki pertanyaan atau memerlukan bantuan, jangan ragu untuk menghubungi kami melalui formulir kontak atau fitur dukungan pelanggan di aplikasi.\n    \n- **Berkontribusi pada Pengalaman:**  \n    Bagikan pengalaman Anda dengan kami! Kami selalu terbuka untuk umpan balik dan saran agar dapat terus meningkatkan layanan kami.\n    \n- **Selamat Bersenang-senang:**  \n    Selamat bersenang-senang mengeksplorasi event, memesan tiket, dan menciptakan kenangan tak terlupakan. Depublic hadir untuk menyertai setiap langkah perjalanan Anda."
+		},
+		{
+			"name": "Event",
+			"item": [
+				{
+					"name": "GetAllEvent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"events"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi tentang semua event yang tersedia di platform ini. Ini adalah endpoint yang berguna untuk menampilkan daftar lengkap event yang dapat dijelajahi oleh pengguna.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah akses yang tidak sah.\n- Penggunaan endpoint ini sebaiknya dibatasi sesuai kebutuhan, dan data sensitif event harus diatur dengan baik."
+					},
+					"response": [
+						{
+							"name": "GetAllEvent",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/events",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"events"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:11:40 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1376"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"events\": [\n        {\n            \"id\": 4,\n            \"name\": \"Maher Zain\",\n            \"image\": \"\",\n            \"description\": \"\",\n            \"category\": \"Music\",\n            \"lokasi\": \"Jawa Tengah\",\n            \"price\": 200000,\n            \"data_start\": \"2023-12-04T08:00:00+08:00\",\n            \"data_end\": \"2023-12-05T08:00:00+08:00\",\n            \"quantity\": 3,\n            \"status\": \"Available\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Event Test\",\n            \"image\": \"https://example.com/event_image.jpg\",\n            \"description\": \"This is a test event\",\n            \"category\": \"Test Category\",\n            \"lokasi\": \"Test Location\",\n            \"price\": 50000,\n            \"data_start\": \"2023-12-10T18:00:00+08:00\",\n            \"data_end\": \"2023-12-12T02:00:00+08:00\",\n            \"quantity\": 100,\n            \"status\": \"Available\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Event Music\",\n            \"image\": \"https://example.com/event_image.jpg\",\n            \"description\": \"This is a test event\",\n            \"category\": \"Test Category\",\n            \"lokasi\": \"Test Location\",\n            \"price\": 100000,\n            \"data_start\": \"2023-12-10T18:00:00+08:00\",\n            \"data_end\": \"2023-12-12T02:00:00+08:00\",\n            \"quantity\": 99,\n            \"status\": \"Available\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Event Music\",\n            \"image\": \"https://example.com/event_image.jpg\",\n            \"description\": \"This is a test event\",\n            \"category\": \"Test Category\",\n            \"lokasi\": \"Test Location\",\n            \"price\": 60000,\n            \"data_start\": \"2023-12-10T18:00:00+08:00\",\n            \"data_end\": \"2023-12-12T02:00:00+08:00\",\n            \"quantity\": 63,\n            \"status\": \"Available\"\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Event Test update\",\n            \"image\": \"\",\n            \"description\": \"\",\n            \"category\": \"Test Category\",\n            \"lokasi\": \"Test Location Update\",\n            \"price\": 100000,\n            \"data_start\": \"2023-12-04T08:00:00+08:00\",\n            \"data_end\": \"2023-12-05T08:00:00+08:00\",\n            \"quantity\": 6,\n            \"status\": \"Available\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "CreateEvent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Event Kpop\",\r\n  \"image\": \"https://example.com/event_image.jpg\",\r\n  \"description\": \"This is a test event\",\r\n  \"category\": \"Test Category\",\r\n  \"lokasi\": \"Test Location\",\r\n  \"data_start\": \"2023-12-10T10:00:00Z\",\r\n  \"data_end\": \"2023-12-11T18:00:00Z\",\r\n  \"price\": 700000,\r\n  \"quantity\": 100,\r\n  \"status\": \"Available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"events"
+							]
+						},
+						"description": "Depublic Ticketing App memungkinkan pembuatan event baru di platform. Ini adalah endpoint yang digunakan untuk menambahkan event baru ke dalam sistem.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah pembuatan event yang tidak diinginkan.\n    \n- Verifikasi data input event agar sesuai dengan format yang diharapkan dan hindari data yang merugikan atau tidak aman.\n    \n- Penggunaan endpoint ini harus sesuai dengan aturan bisnis dan kebijakan privasi platform."
+					},
+					"response": [
+						{
+							"name": "CreateEvent",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Event Kpop\",\r\n  \"image\": \"https://example.com/event_image.jpg\",\r\n  \"description\": \"This is a test event\",\r\n  \"category\": \"Test Category\",\r\n  \"lokasi\": \"Test Location\",\r\n  \"data_start\": \"2023-12-10T10:00:00Z\",\r\n  \"data_end\": \"2023-12-11T18:00:00Z\",\r\n  \"price\": 700000,\r\n  \"quantity\": 100,\r\n  \"status\": \"Available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/events",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"events"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:18:27 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "285"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"event\": {\n        \"id\": 9,\n        \"name\": \"Event Kpop\",\n        \"image\": \"https://example.com/event_image.jpg\",\n        \"description\": \"This is a test event\",\n        \"category\": \"Test Category\",\n        \"lokasi\": \"Test Location\",\n        \"data_start\": \"10 Januari 2023\",\n        \"data_end\": \"11 Januari 2023\",\n        \"price\": 700000,\n        \"quantity\": 100,\n        \"status\": \"Available\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "GetEventById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/events/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"events",
+								"5"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi lengkap tentang sebuah event berdasarkan ID event tertentu. Ini memungkinkan pengguna atau admin untuk melihat detail spesifik dari suatu event.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah akses yang tidak sah.\n    \n- Gunakan informasi ini dengan bijak dan sesuai dengan pedoman keamanan dan privasi.\n    \n- Jika diperlukan, endpoint ini dapat diimplementasikan untuk memberikan informasi lebih rinci seperti artis yang tampil, deskripsi event, atau gambar event."
+					},
+					"response": [
+						{
+							"name": "GetEventById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/events/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:12:23 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "304"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"event\": {\n        \"id\": 5,\n        \"name\": \"Event Test\",\n        \"image\": \"https://example.com/event_image.jpg\",\n        \"description\": \"This is a test event\",\n        \"category\": \"Test Category\",\n        \"lokasi\": \"Test Location\",\n        \"price\": 50000,\n        \"data_start\": \"2023-12-10T18:00:00+08:00\",\n        \"data_end\": \"2023-12-12T02:00:00+08:00\",\n        \"quantity\": 100,\n        \"status\": \"Available\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "UpdateEvent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Event Art\",\r\n  \"image\": \"https://example.com/event_image.jpg\",\r\n  \"description\": \"This is a Event Sport\",\r\n  \"category\": \"Test Category\",\r\n  \"lokasi\": \"Test Location\",\r\n  \"data_start\": \"2023-12-10T10:00:00Z\",\r\n  \"data_end\": \"2023-12-11T18:00:00Z\",\r\n  \"price\": 700000,\r\n  \"quantity\": 100,\r\n  \"status\": \"Available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/events/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"events",
+								"9"
+							]
+						},
+						"description": "Depublic Ticketing App memungkinkan pembaruan informasi suatu event berdasarkan ID event tertentu. Ini adalah endpoint yang digunakan untuk memperbarui detail spesifik dari suatu event, seperti nama, lokasi, tanggal, kategori, atau jumlah tiket yang tersedia.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah pembaruan yang tidak diinginkan.\n    \n- Verifikasi data input event agar sesuai dengan format yang diharapkan dan hindari data yang merugikan atau tidak aman.\n    \n- Penggunaan endpoint ini harus sesuai dengan aturan bisnis dan kebijakan privasi platform."
+					},
+					"response": [
+						{
+							"name": "UpdateEvent",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Event Art\",\r\n  \"image\": \"https://example.com/event_image.jpg\",\r\n  \"description\": \"This is a Event Sport\",\r\n  \"category\": \"Test Category\",\r\n  \"lokasi\": \"Test Location\",\r\n  \"data_start\": \"2023-12-10T10:00:00Z\",\r\n  \"data_end\": \"2023-12-11T18:00:00Z\",\r\n  \"price\": 700000,\r\n  \"quantity\": 100,\r\n  \"status\": \"Available\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/events/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:19:33 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "285"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"event\": {\n        \"id\": 9,\n        \"name\": \"Event Art\",\n        \"image\": \"https://example.com/event_image.jpg\",\n        \"description\": \"This is a Event Sport\",\n        \"category\": \"Test Category\",\n        \"lokasi\": \"Test Location\",\n        \"data_start\": \"10 Januari 2023\",\n        \"data_end\": \"11 Januari 2023\",\n        \"price\": 700000,\n        \"quantity\": 100,\n        \"status\": \"Available\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "DeleteEvent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/events/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"events",
+								"9"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan fungsionalitas untuk menghapus suatu event berdasarkan ID event tertentu. Ini adalah endpoint yang digunakan untuk menghapus event dari sistem secara permanen.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah penghapusan yang tidak diinginkan.\n    \n- Verifikasi bahwa pengguna yang mengakses endpoint ini memiliki hak akses yang sesuai untuk melakukan penghapusan.\n    \n- Penghapusan event juga harus memastikan penghapusan data terkait seperti tiket yang telah terjual atau informasi terkait event lainnya."
+					},
+					"response": [
+						{
+							"name": "DeleteEvent",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/events/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:20:03 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"event deleted\"\n}"
+						}
+					]
+				},
+				{
+					"name": "SearchEvent",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/events/filter?filter={\"sort\":{\"by\":\"date_start\",\"order\":\"desc\"}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"events",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "{\"sort\":{\"by\":\"date_start\",\"order\":\"desc\"}}"
+								}
+							]
+						},
+						"description": "Depublic Ticketing App memberikan fungsionalitas untuk mencari event berdasarkan kriteria tertentu. Ini memungkinkan pengguna untuk menemukan event yang spesifik berdasarkan parameter pencarian seperti nama, kategori, tanggal, atau lokasi.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah akses yang tidak sah.\n    \n- Parameter pencarian dapat dipilih berdasarkan kebutuhan aplikasi, dan validasi parameter harus diterapkan untuk memastikan format yang benar dan aman.\n    \n- Hasil pencarian dapat diurutkan berdasarkan relevansi atau kriteria tertentu sesuai kebutuhan aplikasi."
+					},
+					"response": [
+						{
+							"name": "SearchEvent",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/events/filter?filter={\"sort\":{\"by\":\"date_start\",\"order\":\"desc\"}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"events",
+										"filter"
+									],
+									"query": [
+										{
+											"key": "filter",
+											"value": "{\"sort\":{\"by\":\"date_start\",\"order\":\"desc\"}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:13:59 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1376"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"events\": [\n        {\n            \"id\": 5,\n            \"name\": \"Event Test\",\n            \"image\": \"https://example.com/event_image.jpg\",\n            \"description\": \"This is a test event\",\n            \"category\": \"Test Category\",\n            \"lokasi\": \"Test Location\",\n            \"price\": 50000,\n            \"data_start\": \"2023-12-10T18:00:00+08:00\",\n            \"data_end\": \"2023-12-12T02:00:00+08:00\",\n            \"quantity\": 100,\n            \"status\": \"Available\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Event Music\",\n            \"image\": \"https://example.com/event_image.jpg\",\n            \"description\": \"This is a test event\",\n            \"category\": \"Test Category\",\n            \"lokasi\": \"Test Location\",\n            \"price\": 100000,\n            \"data_start\": \"2023-12-10T18:00:00+08:00\",\n            \"data_end\": \"2023-12-12T02:00:00+08:00\",\n            \"quantity\": 99,\n            \"status\": \"Available\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Event Music\",\n            \"image\": \"https://example.com/event_image.jpg\",\n            \"description\": \"This is a test event\",\n            \"category\": \"Test Category\",\n            \"lokasi\": \"Test Location\",\n            \"price\": 60000,\n            \"data_start\": \"2023-12-10T18:00:00+08:00\",\n            \"data_end\": \"2023-12-12T02:00:00+08:00\",\n            \"quantity\": 63,\n            \"status\": \"Available\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Maher Zain\",\n            \"image\": \"\",\n            \"description\": \"\",\n            \"category\": \"Music\",\n            \"lokasi\": \"Jawa Tengah\",\n            \"price\": 200000,\n            \"data_start\": \"2023-12-04T08:00:00+08:00\",\n            \"data_end\": \"2023-12-05T08:00:00+08:00\",\n            \"quantity\": 3,\n            \"status\": \"Available\"\n        },\n        {\n            \"id\": 1,\n            \"name\": \"Event Test update\",\n            \"image\": \"\",\n            \"description\": \"\",\n            \"category\": \"Test Category\",\n            \"lokasi\": \"Test Location Update\",\n            \"price\": 100000,\n            \"data_start\": \"2023-12-04T08:00:00+08:00\",\n            \"data_end\": \"2023-12-05T08:00:00+08:00\",\n            \"quantity\": 6,\n            \"status\": \"Available\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi tentang semua event yang tersedia di platform ini. Ini adalah endpoint yang berguna untuk menampilkan daftar lengkap event yang dapat dijelajahi oleh pengguna."
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "CreateTransaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userID\": 13,\r\n  \"eventID\": 6,\r\n  \"quantity\": 1\r\n}   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"transactions"
+							]
+						},
+						"description": "Depublic Ticketing App memungkinkan pembuatan transaksi baru di platform. Ini adalah endpoint yang digunakan ketika pengguna berhasil membeli tiket untuk suatu event.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah pembuatan transaksi yang tidak diinginkan.\n    \n- Verifikasi data input transaksi agar sesuai dengan format yang diharapkan dan hindari data yang merugikan atau tidak aman.\n    \n- Penggunaan endpoint ini harus sesuai dengan aturan bisnis dan kebijakan privasi platform."
+					},
+					"response": [
+						{
+							"name": "CreateTransaction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userID\": 13,\r\n  \"eventID\": 6,\r\n  \"quantity\": 1\r\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/transactions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"transactions"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:10:31 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "253"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"7ad4a451-b3d4-40c8-8c24-508e32b1c670\",\n    \"event_id\": 6,\n    \"user_id\": 13,\n    \"quantity\": 1,\n    \"total\": 60000,\n    \"redirect_url\": \"https://app.sandbox.midtrans.com/snap/v3/redirection/59bf1aa4-e8bc-4d44-9691-335b1ef3af1f\",\n    \"status\": \"\",\n    \"created_at\": \"2023-12-11 14:10:31\"\n}"
+						}
+					]
+				},
+				{
+					"name": "GetAllTransaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/transactions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"transactions"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi tentang semua transaksi yang telah dilakukan di platform ini. Ini adalah endpoint yang berguna untuk menampilkan daftar lengkap transaksi yang terkait dengan pembelian tiket.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah akses yang tidak sah.\n    \n- Penggunaan endpoint ini sebaiknya dibatasi sesuai kebutuhan, dan data sensitif transaksi harus diatur dengan baik."
+					},
+					"response": [
+						{
+							"name": "GetAllTransaction",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/transactions",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"transactions"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:17:31 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "510"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": \"00000000-0000-0000-0000-000000000000\",\n            \"event_id\": 6,\n            \"user_id\": 9,\n            \"quantity\": 3,\n            \"total\": 180000,\n            \"redirect_url\": \"\",\n            \"status\": \"\",\n            \"created_at\": \"2023-12-09 17:24:37\"\n        },\n        {\n            \"id\": \"88350b3d-3ec1-44e2-a6a0-94e8c1e54a0d\",\n            \"event_id\": 1,\n            \"user_id\": 9,\n            \"quantity\": 5,\n            \"total\": 500000,\n            \"redirect_url\": \"\",\n            \"status\": \"success\",\n            \"created_at\": \"2023-12-09 17:30:04\"\n        },\n        {\n            \"id\": \"7ad4a451-b3d4-40c8-8c24-508e32b1c670\",\n            \"event_id\": 6,\n            \"user_id\": 13,\n            \"quantity\": 1,\n            \"total\": 60000,\n            \"redirect_url\": \"\",\n            \"status\": \"\",\n            \"created_at\": \"2023-12-11 14:10:31\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "GetTransactionById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/transactions/88350b3d-3ec1-44e2-a6a0-94e8c1e54a0d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"transactions",
+								"88350b3d-3ec1-44e2-a6a0-94e8c1e54a0d"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi lengkap tentang sebuah transaksi berdasarkan ID transaksi tertentu. Ini memungkinkan pengguna atau admin untuk melihat detail spesifik dari suatu transaksi.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah akses yang tidak sah.\n    \n- Gunakan informasi ini dengan bijak dan sesuai dengan pedoman keamanan dan privasi.\n    \n- Jika diperlukan, endpoint ini dapat diimplementasikan untuk memberikan informasi lebih rinci seperti jenis pembayaran, harga total, atau informasi pembeli."
+					},
+					"response": [
+						{
+							"name": "GetTransactionById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/transactions/88350b3d-3ec1-44e2-a6a0-94e8c1e54a0d",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"transactions",
+										"88350b3d-3ec1-44e2-a6a0-94e8c1e54a0d"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:17:12 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "266"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"88350b3d-3ec1-44e2-a6a0-94e8c1e54a0d\",\n        \"userID\": 9,\n        \"eventID\": 1,\n        \"transaction_status\": \"success\",\n        \"quantity\": 5,\n        \"total\": 500000,\n        \"redirect_url\": \"\",\n        \"createdAt\": \"2023-12-09T17:30:04.864822+08:00\",\n        \"updatedAt\": \"2023-12-10T06:04:23.470039+08:00\",\n        \"deletedAt\": null\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "GetTransactionByUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/transactions/user/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"transactions",
+								"user",
+								"13"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi tentang semua transaksi yang telah dilakukan oleh seorang pengguna berdasarkan ID pengguna. Ini memungkinkan pengguna atau admin untuk melihat daftar lengkap transaksi yang terkait dengan pembelian tiket oleh pengguna tertentu.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah akses yang tidak sah.\n    \n- Penggunaan endpoint ini sebaiknya dibatasi sesuai kebutuhan, dan data sensitif transaksi harus diatur dengan baik."
+					},
+					"response": [
+						{
+							"name": "GetTransactionByUser",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/transactions/user/13",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"transactions",
+										"user",
+										"13"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:10:59 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "175"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": \"7ad4a451-b3d4-40c8-8c24-508e32b1c670\",\n            \"event_id\": 6,\n            \"user_id\": 13,\n            \"quantity\": 1,\n            \"total\": 60000,\n            \"redirect_url\": \"\",\n            \"status\": \"\",\n            \"created_at\": \"2023-12-11 14:10:31\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Updateransaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlRyaSIsImVtYWlsIjoidHJpQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImV4cCI6MTcwMjI3ODkxMH0.J-XPZanLdVB7aBJsgWuSEcwjZnjEkFBfyeqWdEqRZSw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userID\": 9,\r\n  \"eventID\": 1,\r\n  \"quantity\": 6\r\n}   ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/transactions/7ad4a451-b3d4-40c8-8c24-508e32b1c670",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"transactions",
+								"7ad4a451-b3d4-40c8-8c24-508e32b1c670"
+							]
+						},
+						"description": "Depublic Ticketing App memungkinkan pembaruan informasi suatu transaksi berdasarkan ID transaksi tertentu. Ini adalah endpoint yang digunakan untuk memperbarui detail spesifik dari suatu transaksi, seperti status pembayaran atau jumlah tiket.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah pembaruan yang tidak diinginkan.\n- Verifikasi data input transaksi agar sesuai dengan format yang diharapkan dan hindari data yang merugikan atau tidak aman.\n- Penggunaan endpoint ini harus sesuai dengan aturan bisnis dan kebijakan privasi platform."
+					},
+					"response": [
+						{
+							"name": "Updateransaction",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userID\": 9,\r\n  \"eventID\": 1,\r\n  \"quantity\": 6\r\n}   ",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/transactions/7ad4a451-b3d4-40c8-8c24-508e32b1c670",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"transactions",
+										"7ad4a451-b3d4-40c8-8c24-508e32b1c670"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:45:31 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "173"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": \"7ad4a451-b3d4-40c8-8c24-508e32b1c670\",\n        \"event_id\": 1,\n        \"user_id\": 9,\n        \"quantity\": 6,\n        \"total\": 600000,\n        \"redirect_url\": \"\",\n        \"status\": \"\",\n        \"created_at\": \"0001-01-01 00:00:00\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi tentang semua transaksi yang telah dilakukan di platform ini. Ini adalah endpoint yang berguna untuk menampilkan daftar lengkap transaksi yang terkait dengan pembelian tiket."
+		},
+		{
+			"name": "Blog",
+			"item": [
+				{
+					"name": "CreateBlog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"image\": \"image.jpg\",\r\n  \"date\": \"2023-12-05\",\r\n  \"title\": \"Sample Blog Title 2\",\r\n  \"body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/blogs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"blogs"
+							]
+						},
+						"description": "Depublic Ticketing App memungkinkan pembuatan blog baru di platform. Ini adalah endpoint yang digunakan untuk menambahkan konten informasi tambahan seperti berita, ulasan, atau artikel seputar dunia hiburan dan event.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah pembuatan blog yang tidak diinginkan.\n    \n- Verifikasi data input blog agar sesuai dengan format yang diharapkan dan hindari data yang merugikan atau tidak aman.\n    \n- Penggunaan endpoint ini harus sesuai dengan aturan bisnis dan kebijakan privasi platform."
+					},
+					"response": [
+						{
+							"name": "CreateBlog",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"image\": \"image.jpg\",\r\n  \"date\": \"2023-12-05\",\r\n  \"title\": \"Sample Blog Title 2\",\r\n  \"body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/blogs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"blogs"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:16:52 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "154"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"blog\": {\n        \"id\": 4,\n        \"image\": \"image.jpg\",\n        \"date\": \"2023-12-05\",\n        \"title\": \"Sample Blog Title 2\",\n        \"body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "UpdateBlog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"image\": \"image.jpg\",\r\n  \"date\": \"2023-12-05\",\r\n  \"title\": \"Sample Blog Title 200\",\r\n  \"body\": \"Lorem ipsum dolor sit amet\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/blogs/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"blogs",
+								"2"
+							]
+						},
+						"description": "Depublic Ticketing App memungkinkan pembaruan informasi suatu blog berdasarkan ID blog tertentu. Ini adalah endpoint yang digunakan untuk memperbarui detail spesifik dari suatu blog, seperti judul, penulis, atau isi konten.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah pembaruan yang tidak diinginkan.\n    \n- Verifikasi data input blog agar sesuai dengan format yang diharapkan dan hindari data yang merugikan atau tidak aman.\n    \n- Penggunaan endpoint ini harus sesuai dengan aturan bisnis dan kebijakan privasi platform."
+					},
+					"response": [
+						{
+							"name": "UpdateBlog",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"image\": \"image.jpg\",\r\n  \"date\": \"2023-12-05\",\r\n  \"title\": \"Sample Blog Title 200\",\r\n  \"body\": \"Lorem ipsum dolor sit amet\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/blogs/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"blogs",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:16:12 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "126"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"blog\": {\n        \"id\": 2,\n        \"image\": \"image.jpg\",\n        \"date\": \"2023-12-05\",\n        \"title\": \"Sample Blog Title 200\",\n        \"body\": \"Lorem ipsum dolor sit amet\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "GetAllBlog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/blogs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"blogs"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi tentang semua blog yang telah dipublikasikan di platform ini. Ini adalah endpoint yang berguna untuk menampilkan daftar lengkap blog yang terkait dengan berita, ulasan, atau artikel seputar dunia hiburan dan event.\n\n- Penggunaan endpoint ini dapat memberikan konten tambahan untuk menarik pengguna ke platform dan meningkatkan keterlibatan mereka.\n    \n- Pastikan untuk memberikan informasi yang relevan dan berkualitas dalam blog untuk meningkatkan nilai bagi pengguna.\n    \n- Secara opsional, dapat disediakan parameter pencarian atau filter untuk memperoleh blog yang lebih spesifik sesuai kebutuhan pengguna."
+					},
+					"response": [
+						{
+							"name": "GetAllBlog",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/blogs",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"blogs"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:06:46 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "409"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"blogs\": [\n        {\n            \"id\": 2,\n            \"image\": \"image.jpg\",\n            \"date\": \"2023-12-05\",\n            \"title\": \"Sample Blog Title 11\",\n            \"body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed auctor, justo at cursus luctus, diam mauris eleifend turpis, sit amet facilisis dolor enim eu tellus.\"\n        },\n        {\n            \"id\": 3,\n            \"image\": \"image.jpg\",\n            \"date\": \"2023-12-05\",\n            \"title\": \"Sample Blog Title 2\",\n            \"body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "GetBlogById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/blogs/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"blogs",
+								"3"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi lengkap tentang sebuah blog berdasarkan ID blog tertentu. Ini memungkinkan pengguna atau admin untuk melihat detail spesifik dari suatu blog.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah akses yang tidak sah.\n    \n- Gunakan informasi ini dengan bijak dan sesuai dengan pedoman keamanan dan privasi."
+					},
+					"response": [
+						{
+							"name": "GetBlogById",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/blogs/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"blogs",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:07:09 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "154"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"blog\": {\n        \"id\": 3,\n        \"image\": \"image.jpg\",\n        \"date\": \"2023-12-05\",\n        \"title\": \"Sample Blog Title 2\",\n        \"body\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit.\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "DeleteBlog",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/blogs/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"blogs",
+								"2"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan fungsionalitas untuk menghapus suatu blog berdasarkan ID blog tertentu. Ini adalah endpoint yang digunakan untuk menghapus blog dari sistem secara permanen.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah penghapusan yang tidak diinginkan.\n    \n- Verifikasi bahwa pengguna yang mengakses endpoint ini memiliki hak akses yang sesuai untuk melakukan penghapusan.\n    \n- Penghapusan blog juga harus memastikan penghapusan data terkait seperti komentar atau informasi terkait blog lainnya.\n    \n- Hindari penggunaan endpoint ini tanpa pertimbangan yang matang, dan pastikan penggunaan sesuai dengan aturan bisnis dan kebijakan privasi platform."
+					},
+					"response": [
+						{
+							"name": "DeleteBlog",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/blogs/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"blogs",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:16:30 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"blog deleted\"\n}"
+						}
+					]
+				}
+			],
+			"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi tentang semua blog yang telah dipublikasikan di platform ini. Ini adalah endpoint yang berguna untuk menampilkan daftar lengkap blog yang terkait dengan berita, ulasan, atau artikel seputar dunia hiburan dan event.\n\n- Penggunaan endpoint ini dapat memberikan konten tambahan untuk menarik pengguna ke platform dan meningkatkan keterlibatan mereka.\n    \n- Pastikan untuk memberikan informasi yang relevan dan berkualitas dalam blog untuk meningkatkan nilai bagi pengguna.\n    \n- Secara opsional, dapat disediakan parameter pencarian atau filter untuk memperoleh blog yang lebih spesifik sesuai kebutuhan pengguna."
+		},
+		{
+			"name": "Notification",
+			"item": [
+				{
+					"name": "GetAllNotification",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_admin}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/notifications",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"notifications"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi tentang semua pemberitahuan yang telah dikirimkan oleh sistem. Ini adalah endpoint yang berguna untuk menampilkan daftar lengkap pemberitahuan yang telah disampaikan kepada pengguna.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah akses yang tidak sah.\n    \n- Penggunaan endpoint ini sebaiknya dibatasi sesuai kebutuhan, dan data sensitif dalam pemberitahuan harus diatur dengan baik.\n    \n- Berikan informasi yang relevan dan berkualitas dalam pemberitahuan untuk meningkatkan nilai bagi pengguna."
+					},
+					"response": [
+						{
+							"name": "GetAllNotification",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/notifications",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"notifications"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:15:45 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1592"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"title\": \"Buat Akun\",\n            \"content\": \"User Dengan Nama: raihan, Telah Berhasil Membuat Akun\",\n            \"is_read\": false,\n            \"created_at\": \"2023-12-08T00:36:16.675929+08:00\"\n        },\n        {\n            \"id\": 3,\n            \"title\": \"Buat Akun\",\n            \"content\": \"User Dengan Nama: raihan, Telah Berhasil Membuat Akun\",\n            \"is_read\": false,\n            \"created_at\": \"2023-12-08T00:38:41.271886+08:00\"\n        },\n        {\n            \"id\": 8,\n            \"title\": \"Buat Akun\",\n            \"content\": \"User Dengan Nama: fahri, Telah Berhasil Membuat Akun\",\n            \"is_read\": false,\n            \"created_at\": \"2023-12-09T22:06:05.743178+08:00\"\n        },\n        {\n            \"id\": 9,\n            \"title\": \"Buat Akun\",\n            \"content\": \"User Dengan Nama: anggi, Telah Berhasil Membuat Akun\",\n            \"is_read\": false,\n            \"created_at\": \"2023-12-11T13:16:28.202855+08:00\"\n        },\n        {\n            \"id\": 10,\n            \"title\": \"Buat Akun\",\n            \"content\": \"User Dengan Nama: anggi, Telah Berhasil Membuat Akun\",\n            \"is_read\": false,\n            \"created_at\": \"2023-12-11T13:54:01.429846+08:00\"\n        },\n        {\n            \"id\": 1,\n            \"title\": \"Buat Akun\",\n            \"content\": \"User Dengan Nama: pujo, Telah Berhasil Membuat Akun\",\n            \"is_read\": true,\n            \"created_at\": \"2023-12-07T22:10:26.389698+08:00\"\n        },\n        {\n            \"id\": 4,\n            \"title\": \"Transaksi Berhasil\",\n            \"content\": \"User Dengan Nama: 9, Telah Berhasil Membuat Transaksi\",\n            \"is_read\": true,\n            \"created_at\": \"2023-12-09T15:23:40.129678+08:00\"\n        },\n        {\n            \"id\": 5,\n            \"title\": \"Transaksi Berhasil\",\n            \"content\": \"User Dengan Nama: 9, Telah Berhasil Membuat Transaksi\",\n            \"is_read\": true,\n            \"created_at\": \"2023-12-09T15:23:47.7924+08:00\"\n        },\n        {\n            \"id\": 6,\n            \"title\": \"Transaction\",\n            \"content\": \"User Name: 9, Has Successfully Made Payment\",\n            \"is_read\": true,\n            \"created_at\": \"2023-12-09T17:30:40.720523+08:00\"\n        },\n        {\n            \"id\": 7,\n            \"title\": \"Transaction\",\n            \"content\": \"User Name: 9, Has Successfully Made Payment\",\n            \"is_read\": true,\n            \"created_at\": \"2023-12-09T17:30:57.809213+08:00\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "GetUserNotification",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token_user}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/v1/notifications/user/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"notifications",
+								"user",
+								"9"
+							]
+						},
+						"description": "Depublic Ticketing App memberikan akses untuk mendapatkan informasi tentang semua pemberitahuan yang telah dikirimkan kepada seorang pengguna berdasarkan ID pengguna. Ini adalah endpoint yang berguna untuk menampilkan daftar lengkap pemberitahuan yang telah disampaikan kepada pengguna tertentu.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah akses yang tidak sah.\n    \n- Penggunaan endpoint ini sebaiknya dibatasi sesuai kebutuhan, dan data sensitif dalam pemberitahuan harus diatur dengan baik.\n    \n- Informasi status baca ('`read'`) dapat membantu pengguna melacak pemberitahuan yang sudah mereka lihat."
+					},
+					"response": [
+						{
+							"name": "GetUserNotification",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/v1/notifications/user/9",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"notifications",
+										"user",
+										"9"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:05:57 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "799"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": [\n        {\n            \"id\": 7,\n            \"title\": \"Transaction\",\n            \"content\": \"User Name: 9, Has Successfully Made Payment\",\n            \"is_read\": true,\n            \"created_at\": \"2023-12-09T17:30:57.809213+08:00\"\n        },\n        {\n            \"id\": 6,\n            \"title\": \"Transaction\",\n            \"content\": \"User Name: 9, Has Successfully Made Payment\",\n            \"is_read\": true,\n            \"created_at\": \"2023-12-09T17:30:40.720523+08:00\"\n        },\n        {\n            \"id\": 5,\n            \"title\": \"Transaksi Berhasil\",\n            \"content\": \"User Dengan Nama: 9, Telah Berhasil Membuat Transaksi\",\n            \"is_read\": true,\n            \"created_at\": \"2023-12-09T15:23:47.7924+08:00\"\n        },\n        {\n            \"id\": 4,\n            \"title\": \"Transaksi Berhasil\",\n            \"content\": \"User Dengan Nama: 9, Telah Berhasil Membuat Transaksi\",\n            \"is_read\": true,\n            \"created_at\": \"2023-12-09T15:23:40.129678+08:00\"\n        },\n        {\n            \"id\": 1,\n            \"title\": \"Buat Akun\",\n            \"content\": \"User Dengan Nama: pujo, Telah Berhasil Membuat Akun\",\n            \"is_read\": true,\n            \"created_at\": \"2023-12-07T22:10:26.389698+08:00\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			],
+			"description": "Depublic Ticketing App memungkinkan pengiriman pemberitahuan kepada pengguna atau pelanggan. Ini adalah endpoint yang digunakan untuk memberikan informasi penting, pembaruan acara, atau notifikasi terkait platform kepada pengguna."
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"anggi\",\r\n    \"email\": \"anggi@gmail.com\",\r\n    \"number\":\"082292248822\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						},
+						"description": "Depublic Ticketing App memungkinkan pengguna untuk mendaftar dan membuat akun baru di platform. Ini adalah endpoint yang digunakan untuk mengumpulkan informasi pribadi pengguna yang diperlukan untuk pembuatan akun.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah pendaftaran yang tidak sah.\n    \n- Verifikasi bahwa email yang digunakan belum terdaftar sebelumnya untuk memastikan keunikan pengguna.\n    \n- Gunakan kebijakan keamanan yang kuat saat menangani kata sandi pengguna, seperti penyimpanan yang aman dan penggunaan algoritma hash yang kuat."
+					},
+					"response": [
+						{
+							"name": "Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"anggi\",\r\n    \"email\": \"anggi@gmail.com\",\r\n    \"number\":\"082292248822\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 05:16:28 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "99"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"data\": {\n        \"id\": 13,\n        \"name\": \"anggi\",\n        \"email\": \"anggi@gmail.com\",\n        \"number\": \"082292248822\",\n        \"role\": \"Buyer\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"anggi@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						},
+						"description": "Depublic Ticketing App memungkinkan pengguna untuk melakukan otentikasi dan login ke dalam platform. Ini adalah endpoint yang digunakan untuk mengakses akun pengguna dengan menyediakan informasi otentikasi yang benar.\n\n- Pastikan untuk mengamankan endpoint ini dengan kebijakan akses yang sesuai untuk mencegah akses yang tidak sah.\n    \n- Verifikasi bahwa email dan password yang digunakan sesuai dengan informasi yang terdaftar.\n    \n- Token otentikasi yang dihasilkan sebaiknya memiliki masa berlaku yang terbatas untuk keamanan tambahan."
+					},
+					"response": [
+						{
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"anggi@gmail.com\",\r\n    \"password\":\"12345678\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/api/v1/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"v1",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=UTF-8"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 11 Dec 2023 06:04:32 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "391"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJBbmdnaSBBaXN5YWgiLCJlbWFpbCI6ImFuZ2dpQGdtYWlsLmNvbSIsInJvbGUiOiJCdXllciIsImV4cCI6MTcwMjI3ODI3Mn0.m0T_NLjXZuma_d-hYFokESnT95-J7QeNomf1YWFvpt4\",\n    \"user\": {\n        \"id\": 13,\n        \"name\": \"Anggi Aisyah\",\n        \"email\": \"anggi@gmail.com\",\n        \"number\": \"082292248822\",\n        \"password\": \"$2a$10$dTOc80b6Ze/lQWED/LJVneK5CriMMhMgVPsCnN.VAKAlAwAentOPK\",\n        \"role\": \"Buyer\"\n    }\n}"
+						}
+					]
+				}
+			],
+			"description": "**Autentikasi** merupakan langkah penting dalam mengamankan endpoint-endpoint pada aplikasi. Metode autentikasi memastikan bahwa pengguna atau sistem yang mengakses endpoint memiliki hak akses yang sesuai."
+		}
+	],
+	"variable": [
+		{
+			"key": "token_user",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5hbWUiOiJBbmdnaSBBaXN5YWgiLCJlbWFpbCI6ImFuZ2dpQGdtYWlsLmNvbSIsInJvbGUiOiJCdXllciIsImV4cCI6MTcwMjI3ODI3Mn0.m0T_NLjXZuma_d-hYFokESnT95-J7QeNomf1YWFvpt4"
+		},
+		{
+			"key": "token_admin",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6IlRyaSIsImVtYWlsIjoidHJpQGdtYWlsLmNvbSIsInJvbGUiOiJBZG1pbiIsImV4cCI6MTcwMjI3ODkxMH0.J-XPZanLdVB7aBJsgWuSEcwjZnjEkFBfyeqWdEqRZSw"
+		}
+	]
+}
