@@ -3,7 +3,6 @@ package service
 import (
 	"context"
 	"errors"
-	"fmt"
 
 	"github.com/trikrama/Depublic/common"
 	"github.com/trikrama/Depublic/helper"
@@ -125,13 +124,11 @@ func (s *UserService) LoginUser(c context.Context, email string, password string
 	//validasi email
 	errEmail := validator.EmailFormat(email)
 	if errEmail != nil {
-		fmt.Println("salah di emailformat")
 		return nil, "", errEmail
 	}
 
 	user, err := s.repo.GetUserByEmail(c, email)
 	if err != nil {
-		fmt.Println("salah di getemail")
 		return nil, "", err
 	}
 
@@ -147,7 +144,6 @@ func (s *UserService) LoginUser(c context.Context, email string, password string
 
 	token, err := common.GenerateAccessToken(c, user)
 	if err != nil {
-		fmt.Println("salah di handler generate access token")
 		return nil, "", err
 	}
 

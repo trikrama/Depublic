@@ -1,7 +1,7 @@
 package entity
 
 type BlogResponse struct {
-	ID    int64    `json:"id"`
+	ID    int64  `json:"id"`
 	Image string `json:"image"`
 	Date  string `json:"date"`
 	Title string `json:"title"`

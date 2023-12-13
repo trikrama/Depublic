@@ -4,8 +4,9 @@ import (
 	"context"
 	"errors"
 	"fmt"
- 
+
 	// repositoryEvent "github.com/trikrama/Depublic/internal/app/event/repository"
+	"github.com/google/uuid"
 	entityEvent "github.com/trikrama/Depublic/internal/app/event/entity"
 	"github.com/trikrama/Depublic/internal/app/transaction/entity"
 	"github.com/trikrama/Depublic/internal/app/transaction/repository"
@@ -15,7 +16,7 @@ import (
 type TransactionServiceInterface interface {
 	CreateTransaction(c context.Context, transaction *entity.Transaction, event *entityEvent.Event) (*entity.Transaction, error)
 	UpdateTransaction(c context.Context, transaction *entity.Transaction, event *entityEvent.Event) error
-	DeleteTransaction(c context.Context, id int) error
+	DeleteTransaction(c context.Context, id string) error
 	GetAllTransaction(c context.Context) ([]*entity.Transaction, error)
 	GetTransactionByID(c context.Context, id string) (*entity.Transaction, error)
 	GetTransactionByUser(c context.Context, id int64) ([]*entity.Transaction, error)
@@ -73,8 +74,12 @@ func (s *TransactionService) UpdateTransaction(c context.Context, transaction *e
 	return s.repo.UpdateTransaction(c, transaction)
 }
 
-func (s *TransactionService) DeleteTransaction(c context.Context, id int) error {
-	return s.repo.DeleteTransaction(c, id)
+func (s *TransactionService) DeleteTransaction(c context.Context, id string) error {
+	idConv, err := uuid.Parse(id)
+	if err != nil {
+		return err
+	}
+	return s.repo.DeleteTransaction(c, idConv)
 }
 
 func (s *TransactionService) GetAllTransaction(c context.Context) ([]*entity.Transaction, error) {

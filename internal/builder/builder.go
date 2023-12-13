@@ -23,6 +23,7 @@ func BuildPrivateRoutes(cfg *config.Config, db *gorm.DB, midtransClient snap.Cli
 	notifRepository := repoNotif.NewNotificationRepository(db)
 	notifService := serviceNotif.NewNotificationService(notifRepository)
 	notifHandler := handler.NewNotificationHandler(cfg, notifService)
+
 	// User
 	userRepository := repository.NewRepositoryUser(db)
 	userService := service.NewUserService(userRepository)
@@ -47,22 +48,24 @@ func BuildPrivateRoutes(cfg *config.Config, db *gorm.DB, midtransClient snap.Cli
 }
 
 func BuildPublicRoutes(cfg *config.Config, db *gorm.DB, midtransClient snap.Client) []*router.Route {
-	//repository
-	userRepository := repository.NewRepositoryUser(db)
+	//Notification
 	notifRepository := repoNotif.NewNotificationRepository(db)
-	eventRepository := repoEvent.NewEventRepository(db)
-	transactionRepository := repoTransaction.NewTransactionRepository(db)
-
-	//service
-	userService := service.NewUserService(userRepository)
 	notifService := serviceNotif.NewNotificationService(notifRepository)
+
+	// User
+	userRepository := repository.NewRepositoryUser(db)
+	userService := service.NewUserService(userRepository)
+	authHandler := handler.NewAuthHandler(cfg, userService, notifService)
+
+	// Event
+	eventRepository := repoEvent.NewEventRepository(db)
 	eventService := serviceEvent.NewEventService(eventRepository)
+	eventHandler := handler.NewEventHandler(cfg, eventService)
+
+	// Transaction
+	transactionRepository := repoTransaction.NewTransactionRepository(db)
 	paymentService := serviceTransaction.NewPaymentService(midtransClient)
 	transactionService := serviceTransaction.NewTransactionService(transactionRepository)
-
-	//handler
-	authHandler := handler.NewAuthHandler(cfg, userService, notifService)
 	transactionHandler := handler.NewTransactionHandler(cfg, transactionService, notifService, eventService, paymentService)
-	eventHandler := handler.NewEventHandler(cfg, eventService)
 	return router.PublicRoutes(authHandler, transactionHandler, eventHandler)
 }

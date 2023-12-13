@@ -168,8 +168,7 @@ func (h *TransactionHandler) UpdateTransaction(c echo.Context) error {
 
 func (h *TransactionHandler) DeleteTransaction(c echo.Context) error {
 	id := c.Param("id")
-	idInt, _ := strconv.Atoi(id)
-	if err := h.transactionService.DeleteTransaction(c.Request().Context(), idInt); err != nil {
+	if err := h.transactionService.DeleteTransaction(c.Request().Context(), id); err != nil {
 		return c.JSON(http.StatusBadRequest, validator.ValidatorErrors(err))
 	}
 	return c.JSON(http.StatusOK, echo.Map{

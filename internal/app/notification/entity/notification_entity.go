@@ -31,6 +31,7 @@ func NewNotificationUpdate(n NotificationRequestUpdate) *Notification {
 	return &Notification{
 		ID:    n.ID,
 		Title: n.Title,
-		Body:  n.Message,
+		Body:  n.Body,
+		Status: n.Status,
 	}
 }

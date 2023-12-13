@@ -10,5 +10,6 @@ type NotificationRequest struct {
 type NotificationRequestUpdate struct {
 	ID      int64  `param:"id" validate:"required"`
 	Title   string `json:"title"`
-	Message string `json:"message"`
+	Body string `json:"body"`
+	Status  string `json:"status"`
 }

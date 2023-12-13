@@ -8,6 +8,7 @@ import (
 	"github.com/trikrama/Depublic/internal/app/notification/entity"
 	"github.com/trikrama/Depublic/internal/app/notification/service"
 	"github.com/trikrama/Depublic/internal/config"
+	"github.com/trikrama/Depublic/internal/http/validator"
 )
 
 type NotificationHandler struct {
@@ -20,7 +21,7 @@ func NewNotificationHandler(cfg *config.Config, notificationService service.Noti
 	}
 }
 
-func (h *NotificationHandler) GetUserNotifications(c echo.Context) error{
+func (h *NotificationHandler) GetUserNotifications(c echo.Context) error {
 	id := c.Param("id")
 	idInt, _ := strconv.Atoi(id)
 	notifications, err := h.notificationService.GetByUser(c.Request().Context(), int64(idInt))
@@ -51,5 +52,36 @@ func (h *NotificationHandler) GetAllNotifications(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, echo.Map{
 		"data": responseNotif,
+	})
+}
+
+func (h *NotificationHandler) UpdateNotification(c echo.Context) error {
+	notifUpdate := entity.NotificationRequestUpdate{}
+	if err := c.Bind(&notifUpdate); err != nil {
+		return c.JSON(http.StatusBadRequest, validator.ValidatorErrors(err))
+	}
+	newNotif := entity.NewNotificationUpdate(notifUpdate)
+	err := h.notificationService.UpdateNotification(c.Request().Context(), newNotif)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, echo.Map{
+			"message": err.Error(),
+		})
+	}
+	return c.JSON(http.StatusOK, echo.Map{
+		"message": "Notification Updated",
+	})
+}
+
+func (h *NotificationHandler) DeleteNotification(c echo.Context) error {
+	id := c.Param("id")
+	idInt, _ := strconv.Atoi(id)
+	err := h.notificationService.DeleteNotification(c.Request().Context(), idInt)
+	if err != nil {
+		return c.JSON(http.StatusBadRequest, echo.Map{
+			"message": err.Error(),
+		})
+	}
+	return c.JSON(http.StatusOK, echo.Map{
+		"message": "Notification Deleted",
 	})
 }

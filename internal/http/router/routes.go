@@ -183,6 +183,18 @@ func PrivateRoutes(
 			Handler: notifHandler.GetAllNotifications,
 			Roles:   onlyAdmin,
 		},
+		{
+			Method:  echo.PUT,
+			Path:    "/notifications/:id",
+			Handler: notifHandler.UpdateNotification,
+			Roles:   onlyAdmin,
+		},
+		{
+			Method:  echo.DELETE,
+			Path:    "/notifications/:id",
+			Handler: notifHandler.DeleteNotification,
+			Roles:   onlyAdmin,
+		},
 	}
 }
 

@@ -13,7 +13,7 @@ type TransactionRepositoryInterface interface {
 	GetTransactionByID(c context.Context, id string) (*entity.Transaction, error)
 	CreateTransaction(c context.Context, transaction *entity.Transaction) (*entity.Transaction, error)
 	UpdateTransaction(c context.Context, transaction *entity.Transaction) error
-	DeleteTransaction(c context.Context, id int) error
+	DeleteTransaction(c context.Context, id uuid.UUID) error
 	GetTransactionByUser(c context.Context, id int64) ([]*entity.Transaction, error)
 	CreateHistory(c context.Context, history *entity.HistoryTransaction) error
 	GetAllHistory(c context.Context) ([]*entity.HistoryTransaction, error)
@@ -65,7 +65,7 @@ func (t *TransactionRepository) UpdateTransaction(c context.Context, transaction
 	return nil
 }
 
-func (t *TransactionRepository) DeleteTransaction(c context.Context, id int) error {
+func (t *TransactionRepository) DeleteTransaction(c context.Context, id uuid.UUID) error {
 	err := t.db.WithContext(c).Delete(&entity.Transaction{}, id).Error
 	if err != nil {
 		return err
