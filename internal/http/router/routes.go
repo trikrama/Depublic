@@ -56,7 +56,7 @@ func PrivateRoutes(
 			Roles:   onlyAdmin,
 		},
 
-		//Router for events
+		//Router for Events
 		{
 			Method:  echo.POST,
 			Path:    "/events",
@@ -82,13 +82,6 @@ func PrivateRoutes(
 			Roles:   onlyAdmin,
 		},
 
-		//filter and sort
-		{
-			Method:  echo.GET,
-			Path:    "/events/filter",
-			Handler: eventHandler.GetAllEventByFilter,
-			Roles:   allRoles,
-		},
 		//Router for transactions
 		{
 			Method:  echo.POST,
@@ -222,6 +215,12 @@ func PublicRoutes(authHandler *handler.AuthHandler, transactionHandler *handler.
 			Method:  echo.GET,
 			Path:    "/events",
 			Handler: eventHandler.GetAllEvents,
+			Roles:   allRoles,
+		},
+		{
+			Method:  echo.GET,
+			Path:    "/events/filter",
+			Handler: eventHandler.GetAllEventByFilter,
 			Roles:   allRoles,
 		},
 	}

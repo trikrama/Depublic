@@ -3,6 +3,7 @@ package handler
 import (
 	"encoding/json"
 	"net/http"
+	"net/url"
 	"strconv"
 
 	"github.com/labstack/echo/v4"
@@ -94,7 +95,12 @@ func (h *EventHandler) DeleteEvent(c echo.Context) error {
 }
 
 func (h *EventHandler) GetAllEventByFilter(c echo.Context) error {
-	query := c.QueryParam("filter")
+	// query := c.QueryParam("filter")
+	queryParams := c.QueryParams()
+	combinedQueryParam := url.Values{}
+	for key, values := range queryParams {
+		combinedQueryParam[key] = values
+	}
 	queryFilter := entity.QueryFilter{}
 	err := json.Unmarshal([]byte(query), &queryFilter)
 	if err != nil {

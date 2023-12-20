@@ -7,10 +7,6 @@ import (
 	"github.com/joho/godotenv"
 )
 
-//migrate -database "postgres://postgres:trikrama@localhost:5432/depublic_db?sslmode=disable" -path db/migrations up
-//migrate create -ext sql -dir db/migrations create_table_product
-//migrate -database "postgres://postgres:trikrama@localhost:5432/weather-app?sslmode=disable" -path db/migrations down
-
 // Config is a config
 type Config struct {
 	Env      string         `env:"ENV" envDefault:"development"`
