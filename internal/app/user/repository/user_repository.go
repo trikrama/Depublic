@@ -2,8 +2,11 @@ package repository
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
+	"time"
 
+	"github.com/go-redis/redis/v8"
 	"github.com/trikrama/Depublic/internal/app/user/entity"
 	"gorm.io/gorm"
 )
@@ -17,22 +20,48 @@ type UserRepositoryInterface interface {
 	GetUserByEmail(c context.Context, email string) (*entity.User, error)
 }
 
+const (
+	UserKey = "users:all"
+)
+
 type UserRepository struct {
-	db *gorm.DB
+	db          *gorm.DB
+	redisClient *redis.Client
 }
 
-func NewRepositoryUser(db *gorm.DB) *UserRepository {
+func NewRepositoryUser(db *gorm.DB, redisClient *redis.Client) *UserRepository {
 	return &UserRepository{
-		db: db,
+		db:          db,
+		redisClient: redisClient,
 	}
 }
 
 func (r *UserRepository) GetAllUser(c context.Context) ([]*entity.User, error) {
 	users := make([]*entity.User, 0)
-	err := r.db.WithContext(c).Find(&users).Error
+	val, err := r.redisClient.Get(context.Background(), UserKey).Result()
+	if err != nil {
+		err := r.db.WithContext(c).Find(&users).Error // SELECT * FROM users
+		if err != nil {
+			return nil, err
+		}
+		val, err := json.Marshal(users)
+		if err != nil {
+			return nil, err
+		}
+
+		// Set the data in Redis with an expiration time (e.g., 1 hour)
+		err = r.redisClient.Set(c, UserKey, val, time.Duration(1)*time.Minute).Err()
+		if err != nil {
+			return nil, err
+		}
+		return users, nil
+	}
+
+	err = json.Unmarshal([]byte(val), &users)
 	if err != nil {
 		return nil, err
 	}
+
 	return users, nil
 }
 

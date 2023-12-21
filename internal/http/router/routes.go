@@ -217,11 +217,5 @@ func PublicRoutes(authHandler *handler.AuthHandler, transactionHandler *handler.
 			Handler: eventHandler.GetAllEvents,
 			Roles:   allRoles,
 		},
-		{
-			Method:  echo.GET,
-			Path:    "/events/filter",
-			Handler: eventHandler.GetAllEventByFilter,
-			Roles:   allRoles,
-		},
 	}
 }

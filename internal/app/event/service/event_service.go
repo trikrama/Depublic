@@ -8,20 +8,12 @@ import (
 )
 
 type EventServiceInterface interface {
-	GetAllEvent(c context.Context) ([]*entity.Event, error)
+	GetAllEvent(c context.Context, queryFilter entity.QueryFilter) ([]*entity.Event, error)
 	GetEventByID(c context.Context, id int64) (*entity.Event, error)
 	CreateEvent(c context.Context, event *entity.Event) error
 	UpdateEvent(c context.Context, event *entity.Event) error
 	DeleteEvent(c context.Context, id int) error
-	GetByFilter(c context.Context, queryFilter entity.QueryFilter) ([]*entity.Event, error)
-	// SearchEvent(ctx context.Context, search string) ([]*entity.Event, error)
-	// SortEventByNewest(ctx context.Context) ([]*entity.Event, error)
-	// SortEventByCheapest(ctx context.Context) ([]*entity.Event, error)
-	// SortEventByExpensive(ctx context.Context) ([]*entity.Event, error)
-	// SortEventByStatus(ctx context.Context, status string) ([]*entity.Event, error)
-	// FilterEventByPrice(ctx context.Context, min, max string) ([]*entity.Event, error)
-	// FilterEventByLocation(ctx context.Context, location string) ([]*entity.Event, error)
-	// FilterEventByDate(ctx context.Context, startDate, endDate time.Time) ([]*entity.Event, error)
+	
 }
 
 type EventService struct {
@@ -34,8 +26,8 @@ func NewEventService(repo repository.EventRepositoryInterface) *EventService {
 	}
 }
 
-func (s *EventService) GetAllEvent(c context.Context) ([]*entity.Event, error) {
-	return s.repo.GetAllEvent(c)
+func (s *EventService) GetAllEvent(c context.Context, queryFilter entity.QueryFilter) ([]*entity.Event, error) {
+	return s.repo.GetAllEvent(c, queryFilter)
 }
 
 func (s *EventService) GetEventByID(c context.Context, id int64) (*entity.Event, error) {
@@ -54,9 +46,9 @@ func (s *EventService) DeleteEvent(c context.Context, id int) error {
 	return s.repo.DeleteEvent(c, id)
 }
 
-func (s *EventService) GetByFilter(c context.Context, queryFilter entity.QueryFilter) ([]*entity.Event, error) {
-	return s.repo.GetByFilter(c, queryFilter)
-}
+// func (s *EventService) GetByFilter(c context.Context, queryFilter entity.QueryFilter) ([]*entity.Event, error) {
+// 	return s.repo.GetByFilter(c, queryFilter)
+// }
 
 // func (s *EventService) SearchEvent(ctx context.Context, search string) ([]*entity.Event, error) {
 // 	return s.repo.SearchEvent(ctx, search)

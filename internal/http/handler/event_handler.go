@@ -1,9 +1,7 @@
 package handler
 
 import (
-	"encoding/json"
 	"net/http"
-	"net/url"
 	"strconv"
 
 	"github.com/labstack/echo/v4"
@@ -24,7 +22,13 @@ func NewEventHandler(cfg *config.Config, eventService service.EventServiceInterf
 }
 
 func (h *EventHandler) GetAllEvents(c echo.Context) error {
-	events, err := h.eventService.GetAllEvent(c.Request().Context())
+	query := entity.QueryFilter{}
+	if err := c.Bind(&query); err != nil {
+		return c.JSON(http.StatusBadRequest, echo.Map{
+			"message": err.Error(),
+		})
+	}
+	events, err := h.eventService.GetAllEvent(c.Request().Context(), query)
 	if err != nil {
 		return c.JSON(http.StatusBadRequest, echo.Map{
 			"message": err.Error(),
@@ -91,30 +95,5 @@ func (h *EventHandler) DeleteEvent(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, echo.Map{
 		"message": "event deleted",
-	})
-}
-
-func (h *EventHandler) GetAllEventByFilter(c echo.Context) error {
-	// query := c.QueryParam("filter")
-	queryParams := c.QueryParams()
-	combinedQueryParam := url.Values{}
-	for key, values := range queryParams {
-		combinedQueryParam[key] = values
-	}
-	queryFilter := entity.QueryFilter{}
-	err := json.Unmarshal([]byte(query), &queryFilter)
-	if err != nil {
-		return c.JSON(http.StatusBadRequest, echo.Map{
-			"message": err.Error(),
-		})
-	}
-	events, err := h.eventService.GetByFilter(c.Request().Context(), queryFilter)
-	if err != nil {
-		return c.JSON(http.StatusInternalServerError, echo.Map{
-			"message": err.Error(),
-		})
-	}
-	return c.JSON(http.StatusOK, echo.Map{
-		"events": events,
 	})
 }

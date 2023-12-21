@@ -1,6 +1,7 @@
 package builder
 
 import (
+	"github.com/go-redis/redis/v8"
 	"github.com/midtrans/midtrans-go/snap"
 	repoBlog "github.com/trikrama/Depublic/internal/app/blog/repository"
 	serviceBlog "github.com/trikrama/Depublic/internal/app/blog/service"
@@ -18,52 +19,52 @@ import (
 	"gorm.io/gorm"
 )
 
-func BuildPrivateRoutes(cfg *config.Config, db *gorm.DB, midtransClient snap.Client) []*router.Route {
+func BuildPrivateRoutes(cfg *config.Config, db *gorm.DB, midtransClient snap.Client, redisClient *redis.Client) []*router.Route {
 	//Notification
-	notifRepository := repoNotif.NewNotificationRepository(db)
+	notifRepository := repoNotif.NewNotificationRepository(db, redisClient)
 	notifService := serviceNotif.NewNotificationService(notifRepository)
 	notifHandler := handler.NewNotificationHandler(cfg, notifService)
 
 	// User
-	userRepository := repository.NewRepositoryUser(db)
+	userRepository := repository.NewRepositoryUser(db, redisClient)
 	userService := service.NewUserService(userRepository)
 	userHandler := handler.NewUserHandler(cfg, userService, notifService)
 
 	// Event
-	eventRepository := repoEvent.NewEventRepository(db)
+	eventRepository := repoEvent.NewEventRepository(db, redisClient)
 	eventService := serviceEvent.NewEventService(eventRepository)
 	eventHandler := handler.NewEventHandler(cfg, eventService)
 
 	// Transaction
-	transactionRepository := repoTransaction.NewTransactionRepository(db)
+	transactionRepository := repoTransaction.NewTransactionRepository(db, redisClient)
 	paymentService := serviceTransaction.NewPaymentService(midtransClient)
 	transactionService := serviceTransaction.NewTransactionService(transactionRepository)
 	transactionHandler := handler.NewTransactionHandler(cfg, transactionService, notifService, eventService, paymentService)
 
 	//Blog
-	blogRepository := repoBlog.NewBlogRepository(db)
+	blogRepository := repoBlog.NewBlogRepository(db, redisClient)
 	blogService := serviceBlog.NewBlogService(blogRepository)
 	blogHandler := handler.NewBlogHandler(cfg, blogService)
 	return router.PrivateRoutes(userHandler, eventHandler, transactionHandler, blogHandler, notifHandler)
 }
 
-func BuildPublicRoutes(cfg *config.Config, db *gorm.DB, midtransClient snap.Client) []*router.Route {
+func BuildPublicRoutes(cfg *config.Config, db *gorm.DB, midtransClient snap.Client, redisClient *redis.Client) []*router.Route {
 	//Notification
-	notifRepository := repoNotif.NewNotificationRepository(db)
+	notifRepository := repoNotif.NewNotificationRepository(db, redisClient)
 	notifService := serviceNotif.NewNotificationService(notifRepository)
 
 	// User
-	userRepository := repository.NewRepositoryUser(db)
+	userRepository := repository.NewRepositoryUser(db, redisClient)
 	userService := service.NewUserService(userRepository)
 	authHandler := handler.NewAuthHandler(cfg, userService, notifService)
 
 	// Event
-	eventRepository := repoEvent.NewEventRepository(db)
+	eventRepository := repoEvent.NewEventRepository(db, redisClient)
 	eventService := serviceEvent.NewEventService(eventRepository)
 	eventHandler := handler.NewEventHandler(cfg, eventService)
 
 	// Transaction
-	transactionRepository := repoTransaction.NewTransactionRepository(db)
+	transactionRepository := repoTransaction.NewTransactionRepository(db, redisClient)
 	paymentService := serviceTransaction.NewPaymentService(midtransClient)
 	transactionService := serviceTransaction.NewTransactionService(transactionRepository)
 	transactionHandler := handler.NewTransactionHandler(cfg, transactionService, notifService, eventService, paymentService)

@@ -9,6 +9,7 @@ import (
 	"strings"
 	"time"
 
+	"github.com/go-redis/redis/v8"
 	"github.com/labstack/echo/v4"
 	"github.com/midtrans/midtrans-go"
 	"github.com/midtrans/midtrans-go/snap"
@@ -33,8 +34,10 @@ func main() {
 
 	midtransClient := initMidtrans(cfg)
 
-	publicRoutes := builder.BuildPublicRoutes(cfg, db, midtransClient)
-	privateRoutes := builder.BuildPrivateRoutes(cfg, db, midtransClient)
+	redisClient := buildRedis(cfg)
+
+	publicRoutes := builder.BuildPublicRoutes(cfg, db, midtransClient, redisClient)
+	privateRoutes := builder.BuildPrivateRoutes(cfg, db, midtransClient, redisClient)
 
 	echoBinder := &echo.DefaultBinder{}
 	formValidator := validator.NewFormValidator()
@@ -57,6 +60,15 @@ func runServer(srv *server.Server, port string) {
 		err := srv.Start(fmt.Sprintf(":%s", port))
 		log.Fatal(err)
 	}()
+}
+
+func buildRedis(cfg *config.Config) *redis.Client {
+	client := redis.NewClient(&redis.Options{
+		Addr:     fmt.Sprintf("%s:%s", cfg.Redis.Host, cfg.Redis.Port),
+		Password: cfg.Redis.Password,
+		DB:       0,
+	})
+	return client
 }
 
 func initMidtrans(cfg *config.Config) snap.Client {
